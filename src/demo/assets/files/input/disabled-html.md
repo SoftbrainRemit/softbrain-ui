@@ -1,0 +1,1 @@
+<soft-input [(ngModel)]="model" placeholder="Disabled input" [disabled]="true"></soft-input>

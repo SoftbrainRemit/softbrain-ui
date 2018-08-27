@@ -1,0 +1,59 @@
+<h2>Tabs</h2>
+<h3>Basic</h3>
+<soft-tabs>
+  <tab title="Tab1">ABC</tab>
+  <tab title="Tab2">DEF</tab>
+</soft-tabs>
+<html-bind url="/tabs/basic-html.md" language="html"></html-bind>
+
+<h3>Title Template</h3>
+<soft-tabs>
+  <tab [title]="'Tab1'">
+    <ng-template #title>Tab1-Template</ng-template>
+    <div class="">ABC</div>
+  </tab>
+  <tab [title]="'Tab2'">
+    <div class="">DEF</div>
+  </tab>
+</soft-tabs>
+<html-bind url="/tabs/title-template-html.md" language="html"></html-bind>
+
+<h3>Disabled & Removable</h3>
+<soft-tabs>
+  <tab title="Tab1" [disabled]="true">
+    Disabled
+  </tab>
+  <tab title="My Tab 2" [removable]="true">
+    Removable
+  </tab>
+</soft-tabs>
+<html-bind url="/tabs/disabled-removable-html.md" language="html"></html-bind>
+
+<h3>Justify</h3>
+<soft-tabs [justify]="true">
+  <tab title="Justify1">
+    Justify1
+  </tab>
+  <tab title="Justify2" [removable]="true">
+    Justify2
+  </tab>
+</soft-tabs>
+<html-bind url="/tabs/justify-html.md" language="html"></html-bind>
+
+<h3>Removed Event</h3>
+<soft-tabs [justify]="true">
+  <tab *ngFor="let t of tabs" [title]="t.title" [removable]="t.removable" (removed)="onRemovable(t)">
+    {{t.content}}
+  </tab>
+</soft-tabs>
+<html-bind url="/tabs/removed-event-html.md" language="html"></html-bind>
+<html-bind url="/tabs/removed-event-component.md" language="typescript"></html-bind>
+
+<h3>Select Event</h3>
+<soft-tabs [justify]="true">
+  <tab *ngFor="let t of tabs" [title]="t.title" [removable]="t.removable" (select)="onSelect(t)">
+    {{t.content}}
+  </tab>
+</soft-tabs>
+<html-bind url="/tabs/select-event-html.md" language="html"></html-bind>
+<html-bind url="/tabs/select-event-component.md" language="typescript"></html-bind>

@@ -1,0 +1,88 @@
+@import "../../softbrain-styles.scss";
+.soft-checkbox-container {
+  .soft-checkbox-check {
+    width: 100%;
+    display: inline-table;
+    .soft-block-icon {
+      display: table-cell; //   border-color: $border-color-focus;
+      vertical-align: middle;
+      text-align: center;
+    }
+    .soft-block-icon.active {
+      border: none;
+      background-color: $border-color-focus;
+      .soft-check-icon {
+        display: inline-block;
+        border-bottom-style: solid;
+        border-right-style: solid;
+        border-color: $default-panel-bg-color;
+        transform: translate(0, -3%) rotate(45deg); 
+      }
+    }
+    .soft-checkbox-label {
+      display: table-cell;
+      padding-left: 5px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.soft-checkbox-container.soft-checkbox-size-default {
+  font-size: $font-size-default;
+  .soft-checkbox-check {
+    .soft-block-icon {
+      width: $checkbox-block-default;
+      height: $checkbox-block-default;
+      .soft-check-icon {
+        width: $checkbox-check-height-default / 2;
+        height: $checkbox-check-height-default;
+        border-width: 2px;
+      }
+    }
+  }
+}
+
+.soft-checkbox-container.soft-checkbox-size-large {
+  font-size: $font-size-large;
+  .soft-checkbox-check {
+    .soft-block-icon {
+      width: $checkbox-block-large;
+      height: $checkbox-block-large;
+      .soft-check-icon {
+        width: $checkbox-check-height-large / 2;
+        height: $checkbox-check-height-large;
+        border-width: 2px;
+      }
+    }
+  }
+}
+
+.soft-checkbox-container.soft-checkbox-size-small {
+  font-size: $font-size-small;
+  .soft-checkbox-check {
+    .soft-block-icon {
+      width: $checkbox-block-small;
+      height: $checkbox-block-small;
+      .soft-check-icon {
+        width: $checkbox-check-height-small / 2;
+        height: $checkbox-check-height-small;
+        border-width: 1.2px;
+      }
+    }
+  }
+}
+
+.soft-checkbox-container.soft-checkbox-size-mini {
+  font-size: $font-size-mini;
+  .soft-checkbox-check {
+    .soft-block-icon {
+      width: $checkbox-block-mini;
+      height: $checkbox-block-mini;
+      .soft-check-icon {
+        width: $checkbox-check-height-mini / 2;
+        height: $checkbox-check-height-mini;
+        border-width: 1.2px;
+      }
+    }
+  }
+}

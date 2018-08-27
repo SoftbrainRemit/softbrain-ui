@@ -1,0 +1,55 @@
+<h2>Tooltip</h2>
+<h3>Basic</h3>
+<soft-tooltip [show]="true" message="This is message AAAAA">
+  <div>
+    My Content
+  </div>
+</soft-tooltip>
+<html-bind url="/tooltip/basic-html.md" language="html"></html-bind>
+
+<h3>Colors</h3>
+<soft-tooltip [show]="true" [color]="'primary'" message="This is primary color">
+  <soft-button>
+    Primary
+  </soft-button>
+</soft-tooltip>
+<soft-tooltip [show]="true" [color]="'danger'" message="This is danger color">
+  <soft-button [color]="'danger'">
+    Danger
+  </soft-button>
+</soft-tooltip>
+<soft-tooltip [show]="true" [color]="'success'" message="This is success color">
+  <soft-button [color]="'success'">
+    Success
+  </soft-button>
+</soft-tooltip>
+<soft-tooltip [show]="true" [color]="'warning'" message="This is warning color">
+  <soft-button [color]="'warning'">
+    Warning
+  </soft-button>
+</soft-tooltip>
+
+<html-bind url="/tooltip/colors-html.md" language="html"></html-bind>
+
+<h3>Placement</h3>
+<soft-tooltip [show]="true" message="This is on top">
+  <soft-button>
+    Top
+  </soft-button>
+</soft-tooltip>
+<soft-tooltip [show]="true" [placement]="'bottom'" message="This is on bottom">
+  <soft-button>
+    Bottom
+  </soft-button>
+</soft-tooltip>
+<soft-tooltip [show]="true" [placement]="'left'" message="This is on left">
+  <soft-button>
+    Left
+  </soft-button>
+</soft-tooltip>
+<soft-tooltip [show]="true" [placement]="'right'" message="This is on right">
+  <soft-button>
+    Right
+  </soft-button>
+</soft-tooltip>
+<html-bind url="/tooltip/placements-html.md" language="html"></html-bind>

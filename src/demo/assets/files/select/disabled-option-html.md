@@ -1,0 +1,1 @@
+<soft-select placeholder="Disabled Option" [(ngModel)]="disabledOptionModel" [items]="listWithDisabled"></soft-select>

@@ -1,0 +1,1 @@
+<soft-select placeholder="KeyField & Value Field" [ajax]="true" [(ngModel)]="customModel" keyField="ListId" valueField="ListDisplay" (dataSource)="onCustomAjax($event)"></soft-select>

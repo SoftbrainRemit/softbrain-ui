@@ -1,0 +1,1 @@
+<soft-select placeholder="Required" [items]="list" [required]="true" [(ngModel)]="requiredModel" name="requiredmodel"></soft-select>

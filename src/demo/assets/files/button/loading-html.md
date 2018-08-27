@@ -1,0 +1,1 @@
+<soft-button [loading]="true">搜索</soft-button>

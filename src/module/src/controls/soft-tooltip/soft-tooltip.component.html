@@ -1,0 +1,10 @@
+<div class="soft-tooltip" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
+  <div [class]="'soft-tooltip-message soft-tooltip-color-' + color" [@fadeAnimation]="!hover" #tipEl [attr.x-placement]="xPlacement" [style.left]="left" [style.right]="right" [style.top]="top" [style.bottom]="bottom">
+    <span *ngIf="!tooltipTemplate">{{message}}</span>
+    <ng-template [ngIf]="tooltipTemplate" [ngTemplateOutlet]="tooltipTemplate"></ng-template>
+    <div class="soft-tooltip-arrow"></div>
+  </div>
+  <div class="soft-tooltip-content">
+    <ng-content></ng-content>
+  </div>
+</div>

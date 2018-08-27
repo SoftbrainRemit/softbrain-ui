@@ -1,0 +1,8 @@
+<div #dialog [class]="'soft-dialog soft-fade ' + className" [ngStyle]="{'z-index': 2000 + level}" (click)="$event.stopPropagation()">
+  <div class="soft-dialog-close" (click)="onClose($event)">
+    <i class="fa fa-remove"></i>
+  </div>
+  <div class="soft-dialog-content">
+    <ng-content></ng-content>
+  </div>
+</div>

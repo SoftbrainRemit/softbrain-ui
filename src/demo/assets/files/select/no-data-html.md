@@ -1,0 +1,1 @@
+<soft-select placeholder="No Data" [items]="[]" [noDataTitle]="'没有数据'"></soft-select>

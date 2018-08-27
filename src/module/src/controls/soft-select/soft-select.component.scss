@@ -1,0 +1,100 @@
+@import "../../softbrain-styles.scss";
+.soft-select-container {
+  position: relative;
+  .soft-select-inner-select {
+    width: 0;
+    height: 0;
+    border: 0;
+  }
+  .soft-select-selection {
+    position: relative;
+    padding-right: 25px;
+    z-index: 9000;
+    .soft-select-icon-container {
+      position: absolute;
+      right: 0.75rem;
+      .soft-select-icon {
+        transition: transform .5s;
+        -webkit-transition: -webkit-transform .5s;
+        -moz-transition: -moz-transform .5s;
+        -ms-transition: -ms-transform .5s;
+      }
+      .soft-select-remove {
+        margin-right: 5px;
+      }
+      .soft-select-remove:hover {
+        color: $border-color-error;
+        transition: color .1s;
+        -webkit-transition: color .1s;
+        -moz-transition: color .1s;
+        -ms-transition: color .1s;
+      }
+    }
+    .soft-select-placeholder {
+      color: $placeholder-color;
+    }
+  }
+  .soft-select-options {
+    position: absolute;
+    width: 100%;
+    z-index: 10000;
+    border: 1px solid;
+    border-color: $border-color-focus;
+    background-color: $default-panel-bg-color;
+    padding: 5px 5px 0;
+    .soft-select-options-nodata-title,
+    .soft-select-options-searching-title {
+      text-align: center;
+      padding: 5px;
+    }
+    .soft-select-options-container {
+      max-height: 245px;
+      overflow-y: auto;
+      .soft-select-option {
+        padding: 5px 10px;
+        list-style: none;
+        color: $text-default-color;
+      }
+      .soft-select-option.active {
+        color: $border-color-focus;
+      }
+      .soft-select-option:not(.disabled):hover {
+        transition: background-color .5s;
+        background-color: $group-text-bg-color;
+        color: $text-default-color;
+      }
+    }
+  }
+}
+
+.soft-select-size-large {
+  font-size: $font-size-large;
+  .soft-select-selection {
+    height: $select-height-large;
+    padding: $input-padding-large;
+  }
+}
+
+.soft-select-size-default {
+  font-size: $font-size-default;
+  .soft-select-selection {
+    height: $select-height-default;
+    padding: $input-padding-default;
+  }
+}
+
+.soft-select-size-small {
+  font-size: $font-size-small;
+  .soft-select-selection {
+    height: $select-height-small;
+    padding: $input-padding-small;
+  }
+}
+
+.soft-select-size-mini {
+  font-size: $font-size-mini;
+  .soft-select-selection {
+    height: $select-height-mini;
+    padding: $input-padding-mini;
+  }
+}

@@ -1,0 +1,59 @@
+@import "../../softbrain-styles.scss";
+.soft-radio-container {
+  .soft-radio {
+    display: flex;
+    align-items: center;
+    .soft-radio-block {
+      background-color: $default-panel-bg-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      .soft-radio-check {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: $default-panel-bg-color;
+      }
+    }
+    .soft-radio-block.active {
+      border: none;
+      background-color: $border-color-focus;
+    }
+    .soft-radio-label {
+      padding-left: 5px;
+    }
+  }
+}
+
+.soft-radio-size-large {
+  font-size: $font-size-large;
+  .soft-radio-block {
+    width: $radio-block-large;
+    height: $radio-block-large;
+  }
+}
+
+.soft-radio-size-default {
+  font-size: $font-size-default;
+  .soft-radio-block {
+    width: $radio-block-default;
+    height: $radio-block-default;
+  }
+}
+
+.soft-radio-size-small {
+  font-size: $font-size-small;
+  .soft-radio-block {
+    width: $radio-block-small;
+    height: $radio-block-small;
+  }
+}
+
+.soft-radio-size-mini {
+  font-size: $font-size-mini;
+  .soft-radio-block {
+    width: $radio-block-mini;
+    height: $radio-block-mini;
+  }
+}

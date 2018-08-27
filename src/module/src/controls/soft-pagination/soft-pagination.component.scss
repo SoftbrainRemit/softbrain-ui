@@ -1,0 +1,42 @@
+@import "../../softbrain-styles.scss";
+.soft-pagination {
+  display: inline-block;
+  width: 100%;
+  .soft-pagination-container {
+    display: flex;
+    align-items: center;
+    .soft-pagination-pager-area {
+      display: flex;
+      >div+div {
+          margin-left: 5px;
+      }
+      ul {
+        padding: 0;
+        display: flex;
+        li {
+          list-style: none;
+          cursor: pointer;
+          padding: 0.2rem 0.5rem;
+          color: $border-color-focus;
+          & + li {
+              margin-left: 5px;
+          }
+          &:hover:not(.disabled),
+          &.active {
+              background-color: $border-color-focus;
+              color: $default-panel-bg-color;
+          }
+        }
+      }
+    }
+    &.soft-pagination-layout-left-right {
+      justify-content: space-between;
+    }
+    &.soft-pagination-layout-left {
+      justify-content: flex-start;
+    }
+    &.soft-pagination-layout-right {
+      justify-content: flex-end;
+    }
+  }
+}

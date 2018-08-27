@@ -1,0 +1,1 @@
+<soft-input [required]="true" [(ngModel)]="requireModel" placeholder="Required" name="requiredModel"></soft-input>

@@ -1,0 +1,1 @@
+<soft-select placeholder="Basic" [(ngModel)]="selectModel" [items]="list"></soft-select>

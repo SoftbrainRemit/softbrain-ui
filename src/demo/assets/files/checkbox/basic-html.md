@@ -1,0 +1,1 @@
+<soft-checkbox [(ngModel)]="model" [label]="'Basic'"></soft-checkbox>

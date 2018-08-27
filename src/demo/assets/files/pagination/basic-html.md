@@ -1,0 +1,1 @@
+<soft-pagination [currentPage]="1" [pageSize]="10" [total]="totalItems" [layout]="'left-right'" [prevText]="'上一页'" [firstText]="'第一页'" [nextText]="'下一页'" [lastText]="'最后一页'" [totalPageTitle]="'共 {2} 条 本页显示第 {0} 到 {1} 条'"></soft-pagination>

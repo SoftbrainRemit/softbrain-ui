@@ -1,0 +1,1 @@
+<soft-select placeholder="Remoting" [ajax]="true" [(ngModel)]="ajaxModel" (dataSource)="onAjax($event)"></soft-select>

@@ -1,0 +1,1 @@
+<soft-input [maxLength]="10" [minLength]="3" [(ngModel)]="lengthModel" placeholder="Min: 3, Length: 10" name="lengthModel"></soft-input>

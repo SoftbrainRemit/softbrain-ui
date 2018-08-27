@@ -1,0 +1,24 @@
+<div [class]="'soft-menu-item soft-menu-item-' + serviceInstance.mode" *ngIf="menu.show">
+  <input type="checkbox" #chk style="width:0; height: 0;position: absolute;" [checked]="expand" (focus)="onFocus()" (blur)="onBlur()">
+  <div class="soft-menu-item-label" [ngClass]="{'menu-disabled': menu.disabled}" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" [ngStyle]="getStyle()"
+    (click)="clickHandle(menu)">
+    <div class="soft-menu-item-label-text" *ngIf="!serviceInstance.template">
+      <div class="soft-menu-item-label-flex">
+        <i *ngIf="menu.icon" [class]="'soft-item-icon ' + menu.icon"></i>
+        <div class="soft-menu-item-action" *ngIf="!menu.children || !menu.children.length">
+          <span class="soft-menu-item-link">{{menu.label}}</span>
+        </div>
+        <div class="soft-menu-item-action" *ngIf="menu.children && menu.children.length">
+          <span>{{menu.label}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="soft-menu-item-label-text" *ngIf="serviceInstance.template">
+      <ng-template [ngTemplateOutlet]="serviceInstance.template" [ngTemplateOutletContext]="{menu: menu}"></ng-template>
+    </div>
+    <span *ngIf="!menu.path && menu.children && menu.children.length" [@reversalAnimation]="expand" class="soft-item-arrow fa fa-angle-down"></span>
+  </div>
+  <div class="soft-menu-item-children" [@dropAnimation]="expand" *ngIf="!menu.path && menu.children && menu.children.length">
+    <soft-sub-menu [menus]="menu.children" [serviceInstance]="serviceInstance"></soft-sub-menu>
+  </div>
+</div>

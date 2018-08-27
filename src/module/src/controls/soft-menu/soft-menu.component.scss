@@ -1,0 +1,13 @@
+.soft-menu {
+  width: 100%;
+  transition: width .2s;
+  -webkit-transition: width .2s;
+  -moz-transition: width .2s;
+  overflow: hidden;
+  &.soft-menu-horizontal {
+    display: flex;
+  }
+  &.soft-menu-vertical {
+    height: 100%;
+  }
+}

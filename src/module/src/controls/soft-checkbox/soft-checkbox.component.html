@@ -1,0 +1,11 @@
+<div [class]="'soft-checkbox soft-checkbox-container soft-d-inline-block soft-checkbox-size-' + size">
+  <div class="soft-checkbox-check" [class.soft-cursor-pointer]="!disabled" [class.disabled]="disabled" (click)="onClick($event)">
+    <input type="checkbox" #checkbox style="width:0; height:0;" [name]="name" [value]="value" [checked]="checked" (focus)="onFocus($event)"
+      (blur)="onBlur($event)">
+    <span class="soft-block-icon soft-border" [class.active]="checked" [class.input-focus]="focus && !disabled" *ngIf="checked">
+      <span class="soft-check-icon"></span>
+    </span>
+    <span class="soft-block-icon soft-border" [class.input-focus]="focus && !disabled" *ngIf="!checked"></span>
+    <span class="soft-checkbox-label">{{label}}</span>
+  </div>
+</div>

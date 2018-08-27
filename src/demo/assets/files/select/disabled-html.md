@@ -1,0 +1,1 @@
+<soft-select placeholder="Disabled" [items]="list" [disabled]="true"></soft-select>

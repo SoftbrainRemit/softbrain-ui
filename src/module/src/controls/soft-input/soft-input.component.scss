@@ -1,0 +1,76 @@
+@import "../../softbrain-styles.scss";
+
+.soft-input,
+.soft-textarea {
+  width: 100%;
+  .soft-input-inner {
+    width: 100%;
+    line-height: 1.5;
+  }
+  .soft-input-inner:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.soft-input-size-default {
+  font-size: $font-size-default;
+  .soft-input-inner {
+    padding: $input-padding-default;
+  }
+}
+
+.soft-input-size-mini {
+  font-size: $font-size-mini;
+  .soft-input-inner {
+    padding: $input-padding-mini;
+  }
+}
+.soft-input-size-small {
+  font-size: $font-size-small;
+  .soft-input-inner {
+    padding: $input-padding-small;
+  }
+}
+.soft-input-size-large {
+  font-size: $font-size-large;
+  .soft-input-inner {
+    padding: $input-padding-large;
+  }
+}
+
+.soft-input.soft-input-group,
+.soft-textarea.soft-input-group {
+  display: inline-table;
+  .soft-input-inner,
+  .soft-input-group-prepend,
+  .soft-input-group-append {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .soft-input-group-prepend,
+  .soft-input-group-append {
+      width: 1%;
+      padding: 0 0.5rem;
+      background-color: $group-text-bg-color;
+      border: 1px solid $border-color-default;
+  }
+  .soft-input-group-append {
+    border-left: none;
+  }
+  .soft-input-group-prepend {
+    border-right: none;
+  }
+}
+
+.soft-textarea {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  .soft-input-inner {
+    height: 4rem;
+  }
+  .soft-input-inner.auto-size {
+      height: auto;
+      min-height: 4rem;
+  }
+}

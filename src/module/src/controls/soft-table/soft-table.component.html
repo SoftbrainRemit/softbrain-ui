@@ -1,0 +1,76 @@
+<div class="soft-table-container">
+  <div class="soft-table-title">
+    <div>
+      <span *ngIf="title">{{title}}</span>
+    </div>
+    <div>
+      <ng-template [ngIf]="subtitleTemplate" [ngTemplateOutlet]="subtitleTemplate"></ng-template>
+    </div>
+  </div>
+  <div class="soft-table-content">
+    <table class="soft-table">
+      <thead>
+        <tr *ngFor="let level of headerLevels">
+          <td *ngIf="level === 1 && hasCheckbox" [rowSpan]="maxLevel" [style.width]="'55px'">
+            <soft-checkbox [(ngModel)]="checkAll" (changeChecked)="onSelectAll($event)"></soft-checkbox>
+          </td>
+          <ng-container *ngFor="let col of columns | softFilter: {currentLevel: level, show: true}">
+            <td (click)="onSortChange(col)" [class.soft-cursor-pointer]="col.sortable" [style.width]="isFixWidth(col) ? '' : col.width"
+              [colSpan]="col.children?.length" [rowSpan]="col.currentLevel === col.maxLevel && col.maxLevel < maxLevel ? (maxLevel - col.maxLevel + 1) : 1">
+              <div class="soft-th-inner" [style.width]="isFixWidth(col) ? col.width : '100%'" [style.text-align]="col.align">
+                <span *ngIf="!col.labelTemplate">{{col.label}}</span>
+                <ng-template [ngIf]="col.labelTemplate" [ngTemplateOutlet]="col.labelTemplate"></ng-template>
+                <span *ngIf="col.currentLevel === col.maxLevel && col.sortable && equalsKey(col.key, 'ASC')" class="fa fa-sort-amount-desc"></span>
+                <span *ngIf="col.currentLevel === col.maxLevel && col.sortable && equalsKey(col.key, 'DESC')" class="fa fa-sort-amount-asc"></span>
+              </div>
+            </td>
+          </ng-container>
+          <td *ngIf="level === 1 && hasAction" [rowSpan]="maxLevel" [style.text-align]="'center'">
+            <span>{{actionLabel}}</span>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of list; let index = index;" #tableRow [ngClass]="getTrClass(tableRow, item, index)" (mouseenter)="tableRow.hover = true"
+          (mouseleave)="tableRow.hover = false">
+          <td *ngIf="hasCheckbox">
+            <soft-checkbox [(ngModel)]="item.checked" (changeChecked)="onCheckedItem(item, $event)"></soft-checkbox>
+          </td>
+          <td *ngFor="let col of deepColumns | softFilter: {show: true};" [style.width]="isFixWidth(col) ? '' : col.width">
+            <div [style.width]="isFixWidth(col) ? col.width : '100%'" [style.text-align]="col.align">
+              <span *ngIf="!col.colTemplate">{{getData(col.key, item)}}</span>
+              <ng-template [ngIf]="col.colTemplate" [ngTemplateOutlet]="col.colTemplate" [ngTemplateOutletContext]="{item: item, index: index}"></ng-template>
+            </div>
+          </td>
+          <td *ngIf="hasAction" [style.text-align]="'center'" [style.width]="actionWidth">
+            <ng-template [ngIf]="actionTemplate" [ngTemplateOutlet]="actionTemplate" [ngTemplateOutletContext]="{item: item, index: index}"></ng-template>
+          </td>
+        </tr>
+        <tr class="soft-table-summary-row" *ngIf="hasSummary">
+          <td [colSpan]="hasCheckbox ? 2 : 1">
+            <div>
+              {{totalLabel || 'Total'}}:
+            </div>
+          </td>
+          <ng-container *ngFor="let col of deepColumns | softFilter: {show: true}; let index = index;">
+            <td *ngIf="index > 0">
+              <div [style.width]="isFixWidth(col) ? col.width : '100%'" [style.text-align]="col.align">
+                <span *ngIf="!col.colTemplate">{{getData(col.key, summary)}}</span>
+                <ng-template [ngIf]="col.colTemplate" [ngTemplateOutlet]="col.colTemplate" [ngTemplateOutletContext]="{item: summary, index: index + 1}"></ng-template>
+              </div>
+            </td>
+          </ng-container>
+          <td *ngIf="hasAction"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="soft-table-footer" *ngIf="footerTemplate || pagerTemplate">
+    <div class="footer-template">
+      <ng-template [ngTemplateOutlet]="footerTemplate"></ng-template>
+    </div>
+    <div class="footer-pager">
+      <ng-template [ngIf]="pagerTemplate" [ngTemplateOutlet]="pagerTemplate"></ng-template>
+    </div>
+  </div>
+</div>

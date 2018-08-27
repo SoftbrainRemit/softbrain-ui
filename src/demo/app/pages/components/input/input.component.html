@@ -1,0 +1,78 @@
+<h2>Input</h2>
+
+<h3>Basic</h3>
+<soft-input [(ngModel)]="basicModel"></soft-input>
+<html-bind url="/input/base-html.md" [language]="'html'"></html-bind>
+<html-bind url="/input/base-component.md" language="typescript"></html-bind>
+
+
+<h3>Textarea</h3>
+<soft-input type="textarea"></soft-input>
+<html-bind url="/input/textarea-html.md" language="html"></html-bind>
+
+<h3>Sizes</h3>
+<div>
+  <soft-input size="mini" placeholder="mini"></soft-input>
+  <soft-input size="small" placeholder="small"></soft-input>
+  <soft-input placeholder="default"></soft-input>
+  <soft-input size="large" placeholder="large"></soft-input>
+</div>
+<html-bind url="/input/sizes-html.md" language="html"></html-bind>
+
+<h3>Disabled</h3>
+<soft-input [(ngModel)]="model" placeholder="Disabled input" [disabled]="true"></soft-input>
+<html-bind url="/input/disabled-html.md" language="html"></html-bind>
+
+<h3>Maxlength & Minlength</h3>
+<soft-input [maxLength]="10" [minLength]="3" [(ngModel)]="lengthModel" placeholder="Min: 3, Length: 10" name="lengthModel"></soft-input>
+<html-bind url="/input/max-min-html.md" language="html"></html-bind>
+
+<h3>Required</h3>
+<soft-input [required]="true" [(ngModel)]="requireModel" placeholder="Required" name="requiredModel"></soft-input>
+<html-bind url="/input/required-html.md" language="html"></html-bind>
+
+<h3>Readonly</h3>
+<soft-input [readonly]="true" placeholder="readonly" [(ngModel)]="readonlyModel" name="readonlyModel"></soft-input>
+<div>
+  {{readonlyModel}}
+</div>
+<html-bind url="/input/readonly-html.md" language="html"></html-bind>
+<html-bind url="/input/readonly-component.md" language="typescript"></html-bind>
+
+<h3>Input group</h3>
+<soft-input placeholder="Prepend">
+  <ng-template #prepend>
+    <span>%</span>
+  </ng-template>
+</soft-input>
+
+<soft-input placeholder="Append">
+  <ng-template #append>
+    <span>Append</span>
+  </ng-template>
+</soft-input>
+
+<soft-input placeholder="Textarea Prepend" type="textarea">
+  <ng-template #prepend>
+    <span>Address</span>
+  </ng-template>
+</soft-input>
+<html-bind url="/input/group-html.md" language="html"></html-bind>
+
+<h3>Change Event</h3>
+<soft-input placeholder="Change Event" [(ngModel)]="changeModel" (valueChange)="onChange($event)"></soft-input>
+<div>
+  {{changeValue | json}}
+</div>
+<html-bind url="/input/change-event-html.md" language="html"></html-bind>
+<html-bind url="/input/change-event-component.md" language="typescript"></html-bind>
+
+<h3>Input Event</h3>
+<soft-input placeholder="Input Event" [(ngModel)]="inputModel" (valueInput)="onInput($event)"></soft-input>
+<html-bind url="/input/input-event-html.md" language="html"></html-bind>
+<html-bind url="/input/input-event-component.md" language="typescript"></html-bind>
+
+<h3>Click Event</h3>
+<soft-input placeholder="Client Event" [(ngModel)]="clickModel" (inputClick)="onClick($event)"></soft-input>
+<html-bind url="/input/click-event-html.md" language="html"></html-bind>
+<html-bind url="/input/click-event-component.md" language="typescript"></html-bind>

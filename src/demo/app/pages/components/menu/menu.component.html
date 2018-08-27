@@ -1,0 +1,51 @@
+<h2>Menu</h2>
+<h3>Basic</h3>
+<div style="width: 300px;">
+  <soft-menu [menus]="menus">
+  </soft-menu>
+</div>
+<html-bind url="/menu/basic-html.md" language="html"></html-bind>
+<html-bind url="/menu/basic-component.md" language="typescript"></html-bind>
+
+<h3>Default Menu</h3>
+<div style="width: 300px;">
+  <soft-menu [menus]="menus" [initIndex]="'2-1'">
+  </soft-menu>
+</div>
+<html-bind url="/menu/default-html.md" language="html"></html-bind>
+
+<h3>Disabled</h3>
+<div style="width: 300px;">
+  <soft-menu [menus]="disabledMenu">
+  </soft-menu>
+</div>
+<html-bind url="/menu/disabled-html.md" language="html"></html-bind>
+<html-bind url="/menu/disabled-component.md" language="typescript"></html-bind>
+
+<h3>Collapse</h3>
+<div style="max-width: 300px; position: relative;">
+  <div style="transition: transform 0.2s; -webkit-transition: transform 0.2s" [ngStyle]="{'transform': isCollapse ? 'translateX(0)' : 'translateX(280px)'}">
+    <i class="fa fa-navicon fa-fw" style="cursor: pointer;" (click)="onCollapse()"></i>
+  </div>
+  <soft-menu [menus]="menus" [collapse]="isCollapse"></soft-menu>
+</div>
+<html-bind url="/menu/collapse-html.md" language="html"></html-bind>
+<html-bind url="/menu/collapse-component.md" language="typescript"></html-bind>
+
+<h3>Horizontal Style</h3>
+<soft-menu [menus]="menus" mode="horizontal">
+</soft-menu>
+<html-bind url="/menu/horizontal-html.md" language="html"></html-bind>
+
+<h3>Trigger</h3>
+<soft-menu [menus]="menus" trigger="hover" mode="horizontal">
+</soft-menu>
+<html-bind url="/menu/trigger-html.md" language="html"></html-bind>
+
+<h3>Custom Colors</h3>
+<div style="width: 300px">
+  <soft-menu [menus]="menus" [initIndex]="'2-1'" [background]="'#663399'" [textColor]="'#ffffff'" [activeColor]="'#ffff00'"
+    [activeBackground]="'#ff0000'" [hoverColor]="'#ff0000'">
+  </soft-menu>
+</div>
+<html-bind url="/menu/custom-colors-html.md" language="html"></html-bind>

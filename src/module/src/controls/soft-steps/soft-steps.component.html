@@ -1,0 +1,22 @@
+<div [class]="'soft-steps'">
+  <div class="soft-step-item" [class.soft-step-success]="activeIndex > index" [class.soft-step-active]="activeIndex === index"
+    [class.soft-step-unreached]="activeIndex < index" *ngFor="let item of steps; let index = index;">
+    <div class="soft-step-item-head">
+      <div class="soft-step-item-contaienr">
+        <div class="soft-step-item-icon" (click)="onSelectStep(item)" [style.cursor]="selectable ? 'pointer' : 'default'">
+          <span [class]="item.icon ? item.icon : 'soft-step-item-icon-index'">
+            <span *ngIf="!item.icon">{{index}}</span>
+          </span>
+        </div>
+      </div>
+      <div class="soft-step-item-line">
+        <div class="soft-step-item-line-inner soft-step-item-left-line"></div>
+        <div class="soft-step-item-line-inner soft-step-item-right-line"></div>
+      </div>
+    </div>
+    <div class="soft-step-item-main">
+      <div class="soft-step-item-label">{{item.label}}</div>
+      <div class="soft-step-item-description">{{item.description}}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<button [type]="type" [class]="'soft-button soft-cursor-pointer soft-button-size-' + size + ' soft-button-color-' + color" [class.input-focus]="focus && !disabled && !loading" [class.disabled]="disabled || loading" (click)="onClick($event)" (focus)="onFocus()"
+  (blur)="onBlur()">
+  <i class="fa fa-gear fa-spin fa-fw soft-loading" *ngIf="loading"></i>
+  <ng-content></ng-content>
+</button>

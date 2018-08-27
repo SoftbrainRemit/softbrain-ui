@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "./../../node_modules/font-awesome/css/font-awesome.min.css";
+
+$border-color-error: #f44336;
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+input.ng-invalid.ng-dirty,
+input.ng-invalid.ng-touched,
+.ng-invalid.ng-touched>.soft-select-container .soft-select-selection,
+.ng-invalid.ng-dirty>.soft-select-container .soft-select-selection {
+  border-color: $border-color-error;
+  -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+.catagory {
+    margin-top: 20px;
+}
+
+.soft-button+.soft-button {
+    margin-left: 5px;
+}

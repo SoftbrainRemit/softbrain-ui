@@ -1,0 +1,1 @@
+<soft-input placeholder="Input Event" [(ngModel)]="inputModel" (valueInput)="onInput($event)"></soft-input>

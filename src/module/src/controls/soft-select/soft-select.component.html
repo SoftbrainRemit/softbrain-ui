@@ -1,0 +1,29 @@
+<div [class]="'soft-select soft-select-container soft-select-size-' + (size || 'default')">
+  <div #selection class="soft-select-selection soft-border soft-d-flex soft-align-center soft-cursor-pointer" [class.disabled]="disabled" [class.input-focus]="focus"
+    (click)="onToggle($event)">
+    <span *ngIf="!this.model && !focus" class="soft-select-placeholder">{{placeholder}}</span>
+    {{displayLabel}}
+    <div class="soft-select-icon-container">
+      <span *ngIf="this.clearable && (this.model || this.displayLabel)" class="fa fa-times-circle soft-select-remove" (click)="onRemove($event)"></span>
+      <span class="soft-select-icon fa fa-angle-down" [class.soft-rotation]="focus"></span>
+    </div>
+  </div>
+  <div [class]="'soft-select-options soft-select-options-placement-' + placement" [ngStyle]="getStyle()" *ngIf="focus">
+    <soft-input *ngIf="showInputBox" [size]="size" (inputClick)="stopPropagation($event)" [autoFocus]="true" [(ngModel)]="keyword"
+      (valueInput)="onKeywordChange($event)"></soft-input>
+    <div class="soft-select-options-nodata-title" *ngIf="!searching && (!datas || !datas.length)" (click)="stopPropagation($event)">
+      <span>{{noDataTitle}}</span>
+    </div>
+    <ul class="soft-select-options-container" [ngStyle]="{'max-height': optionListMaxHeight + 'px'}" (scroll)="onOptionsScroll($event)">
+      <li class="soft-select-option" [ngClass]="{active: model == item[keyField], 'soft-cursor-pointer': !item.disabled, disabled: item.disabled}"
+        *ngFor="let item of datas" (click)="onSelectItem(item, $event)">
+        <span *ngIf="!formatTemplate">{{item[valueField]}}</span>
+        <ng-template [ngIf]="formatTemplate" [ngTemplateOutlet]="formatTemplate" [ngTemplateOutletContext]="{item: item}"></ng-template>
+      </li>
+    </ul>
+    <div class="soft-select-options-searching-title" *ngIf="searching" (click)="stopPropagation($event)">
+      <i class="fa fa-gear fa-spin"></i>
+      <span>{{searchingTitle}}</span>
+    </div>
+  </div>
+</div>

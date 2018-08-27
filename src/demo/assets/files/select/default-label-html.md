@@ -1,0 +1,1 @@
+<soft-select placeholder="Default Select" [displayLabel]="'Option2'" [ajax]="true" [(ngModel)]="defaultSelectModel" (dataSource)="onAjax($event)"></soft-select>

@@ -1,0 +1,1 @@
+<soft-select placeholder="Min Input For Search" [ajax]="true" [minLengthForSearch]="3" [(ngModel)]="minInputModel" (dataSource)="onAjax($event)"></soft-select>

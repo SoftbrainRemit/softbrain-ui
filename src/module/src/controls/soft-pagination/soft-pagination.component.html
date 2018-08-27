@@ -1,0 +1,64 @@
+<div class="soft-pagination">
+  <div [class]="'soft-pagination-container soft-pagination-layout-' + layout">
+    <ng-template [ngTemplateOutlet]="total"></ng-template>
+    <div class="soft-pagination-pager-area">
+      <ng-template [ngTemplateOutlet]="prev"></ng-template>
+      <ng-template [ngTemplateOutlet]="pager"></ng-template>
+      <ng-template [ngTemplateOutlet]="next"></ng-template>
+    </div>
+  </div>
+</div>
+<ng-template #prev>
+  <div class="soft-pagination-item soft-pagination-item-prev">
+    <ul>
+      <li [class.disabled]="currentPage === 1" (click)="onPageChanged(1)">
+        <span *ngIf="firstText">{{firstText}}</span>
+        <span class="fa fa-angle-double-left" *ngIf="!firstText"></span>
+      </li>
+      <li [class.disabled]="currentPage === 1" (click)="onPageChanged(currentPage - 1)">
+        <span *ngIf="prevText">{{prevText}}</span>
+        <span *ngIf="!prevText" class="fa fa-angle-left"></span>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+<ng-template #pager>
+  <div class="soft-pagination-item soft-pagination-item-pager">
+    <ul>
+      <li [class.active]="currentPage === page" *ngFor="let page of pageList; let index = index;"
+        (click)="onPageChanged(page)">
+        <span>{{page}}</span>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+<ng-template #next>
+  <div class="soft-pagination-item soft-pagination-item-next">
+    <ul>
+      <li [class.disabled]="currentPage === maxPage" (click)="onPageChanged(currentPage + 1)">
+        <span *ngIf="nextText">{{nextText}}</span>
+        <span *ngIf="!nextText" class="fa fa-angle-right"></span>
+      </li>
+      <li [class.disabled]="currentPage === maxPage" (click)="onPageChanged(maxPage)">
+        <span *ngIf="lastText">{{lastText}}</span>
+        <span *ngIf="!lastText" class="fa fa-angle-double-right"></span>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+<!-- <ng-template #size>
+  <div class="soft-pagination-item soft-pagination-item-size">
+    <soft-select [(ngModel)]="pageSize" [clearable]="false" [showInputBox]="false" [items]="pageSizeList" (selectChange)="onPageSizeChange($event)"></soft-select>
+  </div>
+</ng-template> -->
+<!-- <ng-template #jumper>
+  <div class="soft-pagination-item soft-pagination-item-jumper">
+    <input type="number" class="soft-pagination-item-jumpsoft-input rounded border" (keypress)="onSizeKeyPress($event)" [(ngModel)]="turnToPage">
+    <a href="javascript:void(0)" class="soft-pagination-item-jumpsoft-action" (click)="onPageChanged(turnToPage)">{{'Go'}}</a>
+  </div>
+</ng-template> -->
+<ng-template #total>
+  <div class="soft-pagination-item soft-pagination-item-total text-primary">
+    <span>{{totalFormat}}</span>
+  </div>
+</ng-template>

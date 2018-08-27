@@ -1,0 +1,1 @@
+<soft-input placeholder="Client Event" [(ngModel)]="clickModel" (inputClick)="onClick($event)"></soft-input>

@@ -1,0 +1,34 @@
+<h2>Button</h2>
+
+<h3>Basic</h3>
+<soft-button>
+  Click Me
+</soft-button>
+<html-bind url="/button/basic-html.md" language="html"></html-bind>
+
+<h3>Colors</h3>
+<soft-button color="primary">Primary</soft-button>
+<soft-button color="danger">Danger</soft-button>
+<soft-button color="warning">Warning</soft-button>
+<soft-button color="success">Success</soft-button>
+<html-bind url="/button/colors-html.md" language="html"></html-bind>
+
+<h3>Disabled</h3>
+<soft-button [disabled]="true" color="primary">禁用</soft-button>
+<soft-button [disabled]="true" color="danger">禁用</soft-button>
+<soft-button [disabled]="true" color="warning">禁用</soft-button>
+<soft-button [disabled]="true" color="success">禁用</soft-button>
+<html-bind url="/button/disabled-html.md" language="html"></html-bind>
+
+<h3>Sizing</h3>
+<div>
+  <soft-button size="mini">超小按钮</soft-button>
+  <soft-button size="small">小按钮</soft-button>
+  <soft-button>默认尺寸按钮</soft-button>
+  <soft-button size="large">大按钮</soft-button>
+</div>
+<html-bind url="/button/sizing-html.md" language="html"></html-bind>
+
+<h3>Loading</h3>
+<soft-button [loading]="true">搜索</soft-button>
+<html-bind url="/button/loading-html.md" language="html"></html-bind>

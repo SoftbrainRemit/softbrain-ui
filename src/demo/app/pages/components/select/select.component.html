@@ -1,0 +1,68 @@
+<h2>Select</h2>
+<h3>Basic</h3>
+<soft-select placeholder="Basic" [(ngModel)]="selectModel" [items]="list"></soft-select>
+<html-bind url="/select/basic-html.md" language="html"></html-bind>
+<html-bind url="/select/basic-component.md" language="typescript"></html-bind>
+
+<h3>Disabled Option</h3>
+<soft-select placeholder="Disabled Option" [(ngModel)]="disabledOptionModel" [items]="listWithDisabled"></soft-select>
+<html-bind url="/select/disabled-option-html.md" language="html"></html-bind>
+<html-bind url="/select/disabled-option-component.md" language="typescript"></html-bind>
+
+<h3>Sizes</h3>
+<div>
+    <soft-select placeholder="mini" [items]="[]" size="mini"></soft-select>
+    <soft-select placeholder="small" [items]="[]" size="small"></soft-select>
+    <soft-select placeholder="default" [items]="[]"></soft-select>
+    <soft-select placeholder="large" [items]="[]" size="large"></soft-select>
+</div>
+<html-bind url="/select/sizes-html.md" language="html"></html-bind>
+
+<h3>NoData display</h3>
+<soft-select placeholder="No Data" [items]="[]" [noDataTitle]="'没有数据'"></soft-select>
+<html-bind url="/select/no-data-html.md" language="html"></html-bind>
+
+<h3>Hide Input box</h3>
+<soft-select placeholder="Hide Input Box" [showInputBox]="false" [items]="list"></soft-select>
+<html-bind url="/select/show-input-box-html.md" language="html"></html-bind>
+
+<h3>Required</h3>
+<soft-select placeholder="Required" [items]="list" [required]="true" [(ngModel)]="requiredModel" name="requiredmodel"></soft-select>
+<html-bind url="/select/required-html.md" language="html"></html-bind>
+
+<h3>Disabled</h3>
+<soft-select placeholder="Disabled" [items]="list" [disabled]="true"></soft-select>
+<html-bind url="/select/disabled-html.md" language="html"></html-bind>
+
+<h2 class="catagory">Remoting</h2>
+<h3>Basic</h3>
+<soft-select placeholder="Remoting" [ajax]="true" [(ngModel)]="ajaxModel" (dataSource)="onAjax($event)"></soft-select>
+<html-bind url="/select/remoting-basic-html.md" language="html"></html-bind>
+<html-bind url="/select/remoting-basic-component.md" language="typescript"></html-bind>
+
+<h3>Searching Text</h3>
+<soft-select placeholder="Searching Text" [ajax]="true" searchingTitle="正在查询..." [(ngModel)]="searchingTextModel" (dataSource)="onAjax($event)"></soft-select>
+<html-bind url="/select/searching-text-html.md" language="html"></html-bind>
+
+<h3>MinInputForSearch</h3>
+<soft-select placeholder="Min Input For Search" [ajax]="true" [minLengthForSearch]="3" [(ngModel)]="minInputModel" (dataSource)="onAjax($event)"></soft-select>
+<html-bind url="/select/min-search-html.md" language="html"></html-bind>
+<html-bind url="/select/min-search-component.md" language="typescript"></html-bind>
+
+<h3>Default Label</h3>
+<soft-select placeholder="Default Select" [displayLabel]="'Option2'" [ajax]="true" [(ngModel)]="defaultSelectModel" (dataSource)="onAjax($event)"></soft-select>
+<html-bind url="/select/default-label-html.md" language="html"></html-bind>
+<html-bind url="/select/default-label-component.md" language="typescript"></html-bind>
+
+<h3>KeyField & ValueField</h3>
+<soft-select placeholder="KeyField & Value Field" [ajax]="true" [(ngModel)]="customModel" keyField="ListId" valueField="ListDisplay" (dataSource)="onCustomAjax($event)"></soft-select>
+<html-bind url="/select/custom-html.md" language="html"></html-bind>
+<html-bind url="/select/custom-component.md" language="typescript"></html-bind>
+
+<h3>Template</h3>
+<soft-select placeholder="My Select" [(ngModel)]="templateModel" [items]="list">
+    <ng-template #format let-item="item">
+        {{item.id}} - <span class="text-danger">{{item.text}}</span>
+    </ng-template>
+</soft-select>
+<html-bind url="/select/template-html.md" language="html"></html-bind>

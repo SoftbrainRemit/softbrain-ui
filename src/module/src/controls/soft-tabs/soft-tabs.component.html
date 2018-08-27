@@ -1,0 +1,14 @@
+<div class="soft-tabs-container">
+  <ul class="soft-tabs-title">
+    <li *ngFor="let tab of tabs" [class.soft-flex-justify]="justify">
+      <a href="javascript:void(0)" [class.disabled]="tab.disabled" [class.active]="tab.active" (click)="onSelectTab(tab)">
+        <span *ngIf="!tab.titleTemplate">{{tab.title}}</span>
+        <ng-template [ngIf]="tab.titleTemplate" [ngTemplateOutlet]="tab.titleTemplate"></ng-template>
+        <span *ngIf="tab.removable" class="soft-tab-remove fa fa-remove" (click)="removeTab(tab)"></span>
+      </a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+@import "../../softbrain-styles.scss";
+.soft-tabs-container {
+  ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    li {
+      list-style: none;
+      &.soft-flex-justify {
+        flex: 1;
+      }
+      a {
+        box-sizing: border-box;
+        display: block;
+        color: $border-color-focus;
+        padding: 0.8rem 1.2rem;
+        border: 1px solid transparent;
+        text-decoration: none;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: background-color .2s, border .5s;
+        -moz-transition: background-color .2s, border .5s;
+        -webkit-transition: background-color .2s, border .5s;
+        .soft-tab-remove {
+          color: $border-color-error;
+          margin-left: 15px;
+          transition: color .2s;
+        }
+        .soft-tab-remove:hover {
+          color: $hover-color-error;
+        }
+        &:hover {
+          background-color: $hover-gray-color;
+        }
+        &.active {
+          border-bottom: 1px solid $border-color-focus;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<div [class]="'soft-radio-container soft-d-inline-block soft-radio-size-' + size">
+  <div style="width: 0; height: 0; overflow: hidden;">
+  <input type="radio" #el  [value]="value" [name]="name" [checked]="checked" (blur)="onBlur()"
+    (focus)="onFocus()">
+  </div>
+  <div class="soft-radio" [class.soft-cursor-pointer]="!disabled" [class.disabled]="disabled" (click)="onSelectRadio($event)">
+    <div class="soft-radio-block soft-border" [class.active]="checked" [class.input-focus]="focus && !disabled">
+      <div class="soft-radio-check" [class.active]="checked"></div>
+    </div>
+    <div class="soft-radio-label"><span>{{label}}</span></div>
+  </div>
+</div>

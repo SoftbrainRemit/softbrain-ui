@@ -1,0 +1,63 @@
+@import "../../softbrain-styles.scss";
+.soft-tooltip {
+    position: relative;
+    display: inline-block;
+    .soft-tooltip-message {
+        position: absolute;
+        left: -99999px;
+        top: 0;
+        max-width: 300px;
+        background-color: #ffffff;
+        border-width: 1px;
+        border-style: solid;
+        padding: 0.3rem 0.5rem;
+        z-index: 20000;
+        &.soft-tooltip-color-primary {
+            border-color: $border-color-focus;
+            color: $border-color-focus;
+        }
+        &.soft-tooltip-color-danger {
+            border-color: $border-color-error;
+            color: $border-color-error;
+        }
+        &.soft-tooltip-color-success {
+            border-color: $border-color-success;
+            color: $border-color-success;
+        }
+        &.soft-tooltip-color-warning {
+            border-color: $border-color-warning;
+            color: $border-color-warning;
+        }
+        .soft-tooltip-arrow {
+            position: absolute;
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent;
+            height: 0;
+            width: 0;
+        }
+        &[x-placement^=top] .soft-tooltip-arrow {
+            bottom: -6px;
+            border-top-color: inherit;
+            border-bottom-width: 0;
+        }
+
+        &[x-placement^=bottom] .soft-tooltip-arrow {
+            top: -6px;
+            border-bottom-color: inherit;
+            border-top-width: 0;
+        }
+
+        &[x-placement^=left] .soft-tooltip-arrow {
+            right: -6px;
+            border-left-color: inherit;
+            border-right-width: 0;
+        }
+
+        &[x-placement^=right] .soft-tooltip-arrow {
+            left: -6px;
+            border-right-color: inherit;
+            border-left-width: 0;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "softbrain-ui",
+  "description": "softbrain common components and services",
+  "version": "1.0.0",
+  "author": {
+    "name": "softbrain",
+    "email": "earthremit@163.com"
+  },
+  "license": "MIT",
+  "publishConfig": {},
+  "keywords": [
+    "angular",
+    "softbrain",
+    "ui"
+  ],
+  "dependencies": {
+  },
+  "peerDependencies": {
+    "@angular/animations": ">=6.1.0",
+    "@angular/common": ">=6.1.0",
+    "@angular/core": ">=6.1.0",
+    "@angular/forms": ">=6.1.0",
+    "@angular/http": ">=6.1.0",
+    "rxjs": ">=6.0.0",
+    "font-awesome": ">=4.7.0"
+  }
+}

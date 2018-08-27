@@ -1,0 +1,36 @@
+@import "../../softbrain-styles.scss";
+.soft-badge {
+    display: inline-block;
+    color: $default-panel-bg-color;
+    &.soft-badge-color-secondary {
+        background-color: $color-secondary;
+    }
+    &.soft-badge-color-primary {
+        background-color: $border-color-focus;
+    }
+    &.soft-badge-color-success {
+        background-color: $border-color-success;
+    }
+    &.soft-badge-color-danger {
+        background-color: $border-color-error;
+    }
+    &.soft-badge-color-warning {
+        background-color: $border-color-warning;
+    }
+    &.soft-badge-size-mini {
+        padding: 2px 6px;
+        font-size: 0.7rem;
+    }
+    &.soft-badge-size-small {
+        padding: 2px 6px;
+        font-size: 0.85rem;
+    }
+    &.soft-badge-size-default {
+        padding: 2px 6px;
+        font-size: 1rem;
+    }
+    &.soft-badge-size-large {
+        padding: 2px 6px;
+        font-size: 1.1rem;
+    }
+}

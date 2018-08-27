@@ -1,0 +1,28 @@
+<div style="display: flex; justify-content: space-between; min-height: 100%;">
+  <div style="width: 240px; min-height: 100%;">
+    <soft-menu [menus]="menus" [initIndex]="routeService.currentIndex" background="#ffff00" activeColor="#0099cc">
+    </soft-menu>
+  </div>
+  <!-- <ul style="width: 240px; min-height: 100%;">
+    <li *ngFor="let menu of menus">
+      <a *ngIf="!menu.children" [routerLink]="menu.path">{{menu.name}}</a>
+      <ng-container *ngIf="menu.children">
+        <div>{{menu.name}}</div>
+        <ul>
+          <li *ngFor="let child of menu.children">
+            <a [routerLink]="child.path">{{child.name}}</a>
+          </li>
+        </ul>
+      </ng-container>
+    </li>
+  </ul> -->
+  <div style="flex: 1;">
+    <!-- <div style="height: 40px;"></div> -->
+    <div style="width: 100%; padding: 15px;">
+      <router-outlet></router-outlet>
+    </div>
+    <div style="height: 40px;">
+    </div>
+  </div>
+
+</div>

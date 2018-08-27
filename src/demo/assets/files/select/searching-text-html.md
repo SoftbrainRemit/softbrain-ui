@@ -1,0 +1,1 @@
+<soft-select placeholder="Searching Text" [ajax]="true" searchingTitle="正在查询..." [(ngModel)]="searchingTextModel" (dataSource)="onAjax($event)"></soft-select>

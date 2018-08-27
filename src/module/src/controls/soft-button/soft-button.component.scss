@@ -1,0 +1,56 @@
+@import "../../softbrain-styles.scss";
+.soft-button {
+  background-color: $default-panel-bg-color;
+  outline: none;
+  transition: background-color .3s;
+  color: $default-panel-bg-color;
+  border-width: 0px;
+  border-style: solid;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  &.soft-button-color-primary {
+    background-color: $border-color-focus;
+    &:hover:not(.disabled),
+    &.input-focus {
+      background-color: $hover-color-focus;
+    }
+  }
+  &.soft-button-color-danger {
+    background-color: $border-color-error;
+    &:hover:not(.disabled),
+    &.input-focus {
+      background-color: $hover-color-error;
+    }
+  }
+  &.soft-button-color-success {
+    background-color: $border-color-success;
+    &:hover:not(.disabled),
+    &.input-focus {
+      background-color: $hover-color-success;
+    }
+  }
+  &.soft-button-color-warning {
+    background-color: $border-color-warning;
+    &:hover:not(.disabled),
+    &.input-focus {
+      background-color: $hover-color-warning;
+    }
+  }
+  &.soft-button-size-large {
+    font-size: $font-size-large;
+    padding: $button-padding-large;
+  }
+  &.soft-button-size-default {
+    font-size: $font-size-default;
+    padding: $button-padding-default;
+  }
+  &.soft-button-size-small {
+    font-size: $font-size-small;
+    padding: $button-padding-small;
+  }
+  &.soft-button-size-mini {
+    font-size: $font-size-mini;
+    padding: $button-padding-mini;
+  }
+}

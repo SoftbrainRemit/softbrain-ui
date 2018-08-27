@@ -1,0 +1,1 @@
+<soft-select placeholder="Hide Input Box" [showInputBox]="false" [items]="list"></soft-select>

@@ -1,0 +1,8 @@
+<div class="language">
+  <div class="bd-clickboard">
+    <soft-copy [data]="data"></soft-copy>
+  </div>
+  <div *ngIf="data" style="width: 100%;">
+    <markdown [data]="data | language:language"></markdown>
+  </div>
+</div>

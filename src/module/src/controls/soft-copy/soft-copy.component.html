@@ -1,0 +1,4 @@
+<div class="soft-copy soft-inline-block soft-cursor-pointer" (click)="copy()">
+  <span class="fa fa-files-o" *ngIf="!titleTemplate"></span>
+  <ng-template [ngIf]="titleTemplate" [ngTemplateOutlet]="titleTemplate"></ng-template>
+</div>

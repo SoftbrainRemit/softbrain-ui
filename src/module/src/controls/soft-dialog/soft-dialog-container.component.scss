@@ -1,0 +1,37 @@
+@import "../../softbrain-styles.scss";
+.soft-dialog {
+  border: 1px solid $border-color-default;
+  background-color: $default-panel-bg-color;
+  padding: 0.5rem 0.8rem;
+  margin: 1.5rem auto;
+  transform: translateY(-10%);
+  max-width: 500px;
+  position: relative;
+  &.soft-fade {
+    transition: opacity .2s, transform .2s;
+  }
+  &.soft-show {
+    transform: translateY(0);
+  }
+  &.soft-dialog-large {
+    max-width: 1000px;
+  }
+  &.soft-dialog-middle {
+    max-width: 800px;
+  }
+  .soft-dialog-close {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: $font-size-large;
+    color: $border-color-error;
+    cursor: pointer;
+    &:hover {
+      color: $hover-color-error;
+    }
+  }
+  .soft-dialog-content {
+    padding: 0.5rem;
+    background-color: $default-panel-bg-color;
+  }
+}

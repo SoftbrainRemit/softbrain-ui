@@ -1,0 +1,40 @@
+<h2>Checkbox</h2>
+<h3>Basic</h3>
+<soft-checkbox [(ngModel)]="model" [label]="'Basic'"></soft-checkbox>
+<div>{{model}}</div>
+<html-bind url="/checkbox/basic-html.md" language="html"></html-bind>
+
+<h3>Multiple</h3>
+<soft-checkbox [multiple]="true" [(ngModel)]="groupModel" [value]="1" [label]="'Value1'"></soft-checkbox>
+<soft-checkbox [multiple]="true" [(ngModel)]="groupModel" [value]="2" [label]="'Value2'"></soft-checkbox>
+<soft-checkbox [multiple]="true" [(ngModel)]="groupModel" [value]="3" [label]="'Value3'"></soft-checkbox>
+<div>
+  {{groupModel | json}}
+</div>
+<html-bind url="/checkbox/multiple-html.md" language="html"></html-bind>
+
+<h3>Sizing</h3>
+<soft-checkbox label="mini" size="mini"></soft-checkbox>
+<soft-checkbox label="small" size="small"></soft-checkbox>
+<soft-checkbox label="default"></soft-checkbox>
+<soft-checkbox label="large" size="large"></soft-checkbox>
+<html-bind url="/checkbox/sizing-html.md" language="html"></html-bind>
+
+<h3>Disabled</h3>
+<div>
+  <soft-checkbox label="Disabled" size="mini" [disabled]="true"></soft-checkbox>
+  <soft-checkbox label="Enable" size="mini"></soft-checkbox>
+</div>
+<div>
+  <soft-checkbox label="Disabled" size="small" [disabled]="true"></soft-checkbox>
+  <soft-checkbox label="Enable" size="small"></soft-checkbox>
+</div>
+<div>
+  <soft-checkbox label="Disabled" size="default" [disabled]="true"></soft-checkbox>
+  <soft-checkbox label="Enable" size="default"></soft-checkbox>
+</div>
+<div>
+  <soft-checkbox label="Disabled" size="large" [disabled]="true"></soft-checkbox>
+  <soft-checkbox label="Enable" size="large"></soft-checkbox>
+</div>
+<html-bind url="/checkbox/disabled-html.md" language="html"></html-bind>
