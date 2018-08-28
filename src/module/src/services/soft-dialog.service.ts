@@ -32,6 +32,7 @@ export class SoftDialogService {
     initialState?: any,
     class?: string,
     styles?: any,
+    backdrop?: boolean
   }): SoftDialogRef {
     if (this.dialogs.length === 0) {
       this._showBackdrop();
@@ -50,7 +51,8 @@ export class SoftDialogService {
       content,
       initialState: data && data.initialState,
       class: data && data.class,
-      styles: styleObj
+      styles: styleObj,
+      backdrop: data && data.backdrop === false ? false : true
     });
     setTimeout(() => {
       this._showContent(contentRef);
@@ -87,7 +89,8 @@ export class SoftDialogService {
     content: string | TemplateRef<any> | any,
     initialState?: any,
     class?: string,
-    styles?: any
+    styles?: any,
+    backdrop?: boolean
   }): SoftContentRef {
     if (!option.content) {
       return;
@@ -109,6 +112,7 @@ export class SoftDialogService {
       this.addStyles(componentRef.location.nativeElement, option.styles);
     }
     Object.assign(componentRef.instance, option.initialState || {});
+    componentRef.instance.backdropClick = option.backdrop;
     const contentRef: SoftContentRef = new SoftContentRef(dialogRef, componentRef);
     dialogRef.hide = () => {
       dialogRef.onBeforeHide.emit();

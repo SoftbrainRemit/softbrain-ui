@@ -16,6 +16,7 @@ export class SoftDialogContainerComponent implements OnInit, AfterViewInit {
   dialogElement: ElementRef;
   level: number = 1;
   className: string;
+  backdropClick = true;
   get isShown() {
     return this._isShown;
   }
@@ -52,8 +53,10 @@ export class SoftDialogContainerComponent implements OnInit, AfterViewInit {
     if (this.element.nativeElement !== event.target) {
       return;
     }
-    this.isShown = false;
-    this.close();
+    if (this.backdropClick) {
+      this.isShown = false;
+      this.close();
+    }
   }
 
   @HostListener('window:keydown.esc', ['$event'])
@@ -65,7 +68,9 @@ export class SoftDialogContainerComponent implements OnInit, AfterViewInit {
     if (event.keyCode === 27) {
       event.preventDefault();
     }
-    this.close();
+    if (this.backdropClick) {
+      this.close();
+    }
   }
 
   private close() {
