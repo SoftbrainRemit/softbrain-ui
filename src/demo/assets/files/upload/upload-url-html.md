@@ -1,0 +1,1 @@
+<soft-upload [showFiles]="true" uploadUrl="/file/upload"  (error)="onerror($event)"></soft-upload>

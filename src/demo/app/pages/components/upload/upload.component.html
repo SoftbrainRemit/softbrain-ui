@@ -1,0 +1,84 @@
+<h2>Upload</h2>
+<h3>Basic</h3>
+
+<soft-upload [showFiles]="true"></soft-upload>
+<html-bind url="/upload/basic-html.md" language="html"></html-bind>
+<h3>Preview</h3>
+<soft-upload [showFiles]="true" [preview]="true"></soft-upload>
+<html-bind url="/upload/preview-html.md" language="html"></html-bind>
+
+<h3>Multiple</h3>
+<soft-upload [showFiles]="true" [preview]="true" [multiple]="true" [maxFileCount]="5"></soft-upload>
+<html-bind url="/upload/multi-html.md" language="html"></html-bind>
+<h3>Trigger</h3>
+<soft-upload [showFiles]="true">
+  <ng-template #trigger>
+    <soft-button>Click to Upload</soft-button>
+  </ng-template>
+</soft-upload>
+<html-bind url="/upload/trigger-html.md" language="html"></html-bind>
+<h3>Tip</h3>
+<soft-upload [showFiles]="true">
+  <ng-template #tip>
+    <span>只能上传.jpg, .png, .gif, .pdf文件，且大小不能超过5M</span>
+  </ng-template>
+</soft-upload>
+<html-bind url="/upload/tip-html.md" language="html"></html-bind>
+
+<h3>MaxFileCount</h3>
+<p>最大文件数</p>
+<soft-upload [showFiles]="true" [maxFileCount]="3"></soft-upload>
+<html-bind url="/upload/max-file-count-html.md" language="html"></html-bind>
+
+<h3>MaxSize</h3>
+<p [innerText]="'文件大小限制，单位为K，如果超过，会在error事件中返回错误对象 { code: \'OutofSize\', data: 文件大小 }'"></p>
+<soft-upload [showFiles]="true" [maxSize]="3000" (error)="onerror($event)"></soft-upload>
+<html-bind url="/upload/max-size-html.md" language="html"></html-bind>
+<html-bind url="/upload/onerror-component.md" language="typescript"></html-bind>
+
+<h3>accept</h3>
+<p [innerText]="'上传文件类型限制，默认为.jpg,.png,.bmp,.pdf，如果类型不对，会在error事件中返回错误对象 { code: \'NotAllowFileType\', data: 文件类型 }'"></p>
+<soft-upload [showFiles]="true" accept=".jpg" (error)="onerror($event)"></soft-upload>
+<html-bind url="/upload/accept-html.md" language="html"></html-bind>
+<html-bind url="/upload/onerror-component.md" language="typescript"></html-bind>
+
+<h3>Button Label</h3>
+<p>上传按钮的显示文字</p>
+<soft-upload [showFiles]="true" btnLabel="Upload File"></soft-upload>
+<html-bind url="/upload/btn-label-html.md" language="html"></html-bind>
+
+<h3>Upload Url</h3>
+<p>上传文件的路径</p>
+<soft-upload [showFiles]="true" uploadUrl="/file/upload" (error)="onerror($event)"></soft-upload>
+<html-bind url="/upload/upload-url-html.md" language="html"></html-bind>
+
+<h3>Sizes</h3>
+<soft-upload size="mini"></soft-upload>
+<soft-upload size="small"></soft-upload>
+<soft-upload size="default"></soft-upload>
+<soft-upload size="large"></soft-upload>
+
+<h3>Mode</h3>
+<p>上传模式，有stream和base64两种方式</p>
+<soft-upload mode="base64" [showFiles]="true" (complete)="onComplete($event)"></soft-upload>
+<html-bind url="/upload/mode-html.md" language="html"></html-bind>
+<html-bind url="/upload/oncomplete-component.md" language="typescript"></html-bind>
+
+<h3>Disabled</h3>
+<soft-upload [showFiles]="true" [disabled]="true"></soft-upload>
+
+<h3>Events</h3>
+<h3>previewFile</h3>
+<p [innerText]="'用户点击文件列表的链接或图片时触发'"></p>
+
+<h3>remove</h3>
+<p [innerText]="'用户移除文件时触发'"></p>
+
+<h3>complete</h3>
+<p [innerText]="'如果有uploadUrl参数，则会在提交完成后触发，如果没有uploadUrl参数，则会在选择文件后触发'"></p>
+
+<h3>uploaded</h3>
+<p [innerText]="'如果有uploadUrl参数才会触发，并且会在complete之前触发, 如果提交出错，则会触发error事件，而不会触发本事件'"></p>
+
+<h3>error</h3>
+<p [innerText]="'错误事件，在上传时文件大小、类型不对，或者提交出错时会触发，文件大小，类型不对，会返回 {code, data} 格式的对象，提交出错则会将错误对象直接返回'"></p>

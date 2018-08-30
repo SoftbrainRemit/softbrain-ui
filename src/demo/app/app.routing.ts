@@ -14,6 +14,7 @@ import { ButtonComponent } from './pages/components/button/button.component';
 import { TabsComponent } from './pages/components/tabs/tabs.component';
 import { CanActivedService } from './services/canActived.service';
 import { TableComponent } from './pages/components/table/table.component';
+import { UploadComponent } from './pages/components/upload/upload.component';
 
 export const appRoutes: Routes = [{
   path: 'index',
@@ -80,6 +81,10 @@ export const appRoutes: Routes = [{
     path: 'steps',
     component: StepsComponent,
     data: { index: 'steps' }
+  }, {
+    path: 'upload',
+    component: UploadComponent,
+    data: { index: 'upload' }
   }]
 }, {
   path: '**',

@@ -1,0 +1,1 @@
+<soft-upload [showFiles]="true" [maxSize]="3000"></soft-upload>

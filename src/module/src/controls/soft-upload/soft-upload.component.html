@@ -1,0 +1,35 @@
+<div [class]="'soft-upload soft-upload-' + size" [class.block]="showFiles">
+  <div class="soft-upload-button-container">
+    <div class="soft-upload-button soft-cursor-pointer" #btnDiv (mouseenter)="btnDiv.hover = true" (mouseleave)="btnDiv.hover = false"
+      [class.disabled]="disabled" (click)="selectFile()">
+      <span class="default-button" [class.hover]="btnDiv.hover" *ngIf="!triggerTemplate">{{btnLabel}}</span>
+      <ng-template [ngIf]="triggerTemplate" [ngTemplateOutlet]="triggerTemplate"></ng-template>
+      <input type="file" style="display: none;" (change)="onFileChange($event)" [multiple]="multiple" *ngIf="!disabled"
+        [name]="name" #file [accept]="accept">
+    </div>
+    <div class="soft-upload-tip" *ngIf="tipTemplate"><ng-template [ngTemplateOutlet]="tipTemplate"></ng-template></div>
+  </div>
+  <div *ngIf="showFiles" class="soft-upload-file-list" [class.preview]="preview">
+    <div class="soft-upload-file" *ngFor="let f of fileList" [class.hover]="f.hover" (mouseenter)="f.hover = true"
+      (mouseleave)="f.hover = false">
+      <ng-container *ngIf="!preview">
+        <div class="soft-upload-file-name">
+          <a href="javascript:void(0);" (click)="onPreview(f)">{{f.file.name}}</a>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="preview">
+        <ng-container *ngIf="f.mime.startsWith('image')">
+          <img class="soft-preview-img" *ngIf="f.mime.startsWith('image')" [src]="f.url" (click)="onPreview(f)">
+        </ng-container>
+        <div class="soft-preview-img" *ngIf="f.file.ext === '.pdf'">
+          <pdf-viewer [src]="f.url" [original-size]="false" style="overflow: hidden; max-width: 100%; display: block; max-height: 100%;"
+            [autoresize]="true"></pdf-viewer>
+        </div>
+        <div class="soft-upload-not-image" *ngIf="!f.mime.startsWith('image') && f.file.ext !== '.pdf'">
+          <span class="fa fa-remove"></span>
+        </div>
+      </ng-container>
+      <div class="soft-upload-file-action fa fa-remove" [class.hover]="f.hover" (click)="removeFile(f)"></div>
+    </div>
+  </div>
+</div>

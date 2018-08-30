@@ -25,3 +25,4 @@ export { SoftMenuItem } from './src/models/soft-menu.interface';
 export { SoftPager } from './src/models/soft-pager';
 export { SoftDialogData, SoftButtonData, SoftDialogResult } from './src/models/soft-dialog-interface';
 export { SoftStepItem } from './src/models/soft-step-item';
+export { SoftFile } from './src/models/soft-file.interface';

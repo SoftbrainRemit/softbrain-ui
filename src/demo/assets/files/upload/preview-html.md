@@ -1,0 +1,1 @@
+<soft-upload [showFiles]="true" [preview]="true"></soft-upload>

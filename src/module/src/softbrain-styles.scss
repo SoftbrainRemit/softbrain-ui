@@ -44,6 +44,13 @@ $border-color-warning: #eb9e05;
 $hover-color-warning: #e9ae3b;
 $color-secondary: $border-color-default;
 
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+$screen-md-max: 1199px;
+$screen-lg-min: 1200px;
+
 * {
   padding: 0;
   margin: 0;

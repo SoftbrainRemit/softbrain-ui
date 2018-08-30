@@ -113,6 +113,11 @@ export class AppComponent implements OnInit {
         path: '/components/steps',
         show: true,
         index: 'steps'
+      }, {
+        label: 'Upload',
+        path: '/components/upload',
+        show: true,
+        index: 'upload'
       }]
     }];
   }

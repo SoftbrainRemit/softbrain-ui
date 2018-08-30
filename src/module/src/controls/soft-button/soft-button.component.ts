@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ContentChild, TemplateRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'soft-button',
@@ -16,8 +16,6 @@ export class SoftButtonComponent implements OnInit {
   disabled: boolean;
   @Input()
   loading: boolean;
-  @Output()
-  click: EventEmitter<any> = new EventEmitter();
 
   focus: boolean;
   constructor() { }
@@ -30,11 +28,5 @@ export class SoftButtonComponent implements OnInit {
   }
   onBlur() {
     this.focus = false;
-  }
-  onClick(event: Event) {
-    event.stopPropagation();
-    if (!this.disabled && !this.loading) {
-      this.click.emit();
-    }
   }
 }

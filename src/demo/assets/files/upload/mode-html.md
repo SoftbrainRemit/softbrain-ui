@@ -1,0 +1,1 @@
+<soft-upload mode="base64" [showFiles]="true" (complete)="onComplete($event)"></soft-upload>

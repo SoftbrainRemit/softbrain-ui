@@ -25,6 +25,7 @@ import { RadioComponent } from './pages/components/radio/radio.component';
 import { ButtonComponent } from './pages/components/button/button.component';
 import { TabsComponent } from './pages/components/tabs/tabs.component';
 import { TableComponent } from './pages/components/table/table.component';
+import { UploadComponent } from './pages/components/upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { TableComponent } from './pages/components/table/table.component';
     PaginationComponent,
     BadgeComponent,
     TooltipComponent,
-    StepsComponent
+    StepsComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,

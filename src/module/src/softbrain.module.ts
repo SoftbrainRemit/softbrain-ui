@@ -29,9 +29,11 @@ import { SoftPaginationComponent } from './controls/soft-pagination/soft-paginat
 import { SoftTooltipComponent } from './controls/soft-tooltip/soft-tooltip.component';
 import { SoftBadgeComponent } from './controls/soft-badge/soft-badge.component';
 import { SoftStepsComponent } from './controls/soft-steps/soft-steps.component';
+import { SoftUploadComponent } from './controls/soft-upload/soft-upload.component';
 
 import { SoftTabDirective } from './directives/soft-tab.directive';
 import { SoftListPipe } from './pipes/soft-list.pipe';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
     imports: [
@@ -39,6 +41,7 @@ import { SoftListPipe } from './pipes/soft-list.pipe';
         FormsModule,
         HttpClientModule,
         RouterModule,
+        PdfViewerModule
     ],
     declarations: [
         SoftInputComponent,
@@ -60,6 +63,7 @@ import { SoftListPipe } from './pipes/soft-list.pipe';
         SoftBadgeComponent,
         SoftTooltipComponent,
         SoftStepsComponent,
+        SoftUploadComponent,
 
         SoftListPipe,
     ],
@@ -87,6 +91,7 @@ import { SoftListPipe } from './pipes/soft-list.pipe';
         SoftBadgeComponent,
         SoftTooltipComponent,
         SoftStepsComponent,
+        SoftUploadComponent,
 
         SoftListPipe,
     ],
