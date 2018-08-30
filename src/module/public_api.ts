@@ -13,6 +13,7 @@ export { SoftPaginationComponent } from './src/controls/soft-pagination/soft-pag
 export { SoftBadgeComponent } from './src/controls/soft-badge/soft-badge.component';
 export { SoftTooltipComponent } from './src/controls/soft-tooltip/soft-tooltip.component';
 export { SoftStepsComponent } from './src/controls/soft-steps/soft-steps.component';
+export { SoftUploadComponent } from './src/controls/soft-upload/soft-upload.component';
 
 export { SoftTabDirective } from './src/directives/soft-tab.directive';
 
