@@ -1,4 +1,4 @@
-# softbrain-ui
+# Softbrain UI
 
 ### 2018.8.30 更新
 新增文件上传组件 soft-upload
