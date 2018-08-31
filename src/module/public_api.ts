@@ -14,6 +14,7 @@ export { SoftBadgeComponent } from './src/controls/soft-badge/soft-badge.compone
 export { SoftTooltipComponent } from './src/controls/soft-tooltip/soft-tooltip.component';
 export { SoftStepsComponent } from './src/controls/soft-steps/soft-steps.component';
 export { SoftUploadComponent } from './src/controls/soft-upload/soft-upload.component';
+export { SoftDropdownComponent } from './src/controls/soft-dropdown/soft-dropdown.component';
 
 export { SoftTabDirective } from './src/directives/soft-tab.directive';
 

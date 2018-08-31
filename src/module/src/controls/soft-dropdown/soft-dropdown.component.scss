@@ -1,0 +1,29 @@
+@import "../../softbrain-styles.scss";
+
+.soft-dropdown {
+  position: relative;
+  display: inline-block;
+
+  .soft-dropdown-action {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .soft-dropdown-arrow {
+        margin-left: 5px;
+    }
+  }
+
+  .soft-dropdown-list {
+    position: absolute;
+    padding: 5px 0;
+
+    &.soft-dropdown-left {
+      left: 0;
+    }
+
+    &.soft-dropdown-right {
+      right: 0;
+    }
+  }
+}

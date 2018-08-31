@@ -1,27 +1,39 @@
 @import "../../softbrain-styles.scss";
+
 .soft-table-container {
   width: 100%;
+  max-width: 100%;
   margin-bottom: 1rem;
+  position: relative;
+
   .soft-table-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.3rem 0;
   }
+
   .soft-table-content {
     width: 100%;
+    overflow-x: auto;
+
     .soft-table {
-      width: 100%;
+      min-width: 100%;
       border-collapse: collapse;
       border: 1px solid $border-color-focus;
+      display: none;
+
       tr {
         td {
           border: 1px solid $border-color-focus;
           padding: 0.5rem 0.75rem;
         }
-      } // border: 1px solid $border-color-focus;
+      }
+
+      // border: 1px solid $border-color-focus;
       thead {
         border-top: 1px solid $border-color-focus;
+
         tr {
           td {
             vertical-align: middle;
@@ -29,20 +41,26 @@
           }
         }
       }
+
       tbody {
         border-top: 1px solid $border-color-focus;
         border-bottom: 1px solid $border-color-focus;
+
         .soft-table-summary-row {
           border-top: 1px solid $border-color-focus;
         }
+
         tr {
           cursor: pointer;
+
           &.hover-row {
             background-color: $hover-background-color;
           }
+
           &.odd {
             background-color: $hover-gray-color;
           }
+
           &.soft-table-summary-row {
             td {
               border-left: none;
@@ -55,13 +73,16 @@
       }
     }
   }
+
   .soft-table-footer {
     width: 100%;
     vertical-align: middle;
     margin-top: 5px;
+
     .footer-pager {
       text-align: left;
     }
+
     .footer-template {
       text-align: right;
     }

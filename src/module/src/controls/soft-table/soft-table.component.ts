@@ -1,8 +1,11 @@
 import {
   Component, Input, EventEmitter, Output, TemplateRef, ContentChild, ContentChildren,
-  QueryList, AfterViewInit, ChangeDetectorRef, SimpleChanges, OnChanges
+  QueryList, AfterViewInit, ChangeDetectorRef, SimpleChanges, OnChanges, ViewChild, ElementRef
 } from '@angular/core';
 import { SoftTableColumnComponent } from './soft-table-column/soft-table-column.component';
+import { Observable } from 'rxjs';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'soft-table',
@@ -10,6 +13,12 @@ import { SoftTableColumnComponent } from './soft-table-column/soft-table-column.
   styleUrls: ['./soft-table.component.scss']
 })
 export class SoftTableComponent implements OnChanges, AfterViewInit {
+  @ViewChild('table')
+  tableElement: ElementRef;
+  @ViewChild('parent')
+  parentElement: ElementRef;
+  @ViewChild('root')
+  root: ElementRef;
   @Input()
   title: string;
   @Input()
@@ -53,7 +62,7 @@ export class SoftTableComponent implements OnChanges, AfterViewInit {
   headerLevels: number[];
   sortField: { key?: string, orderBy?: 'ASC' | 'DESC' } = { orderBy: 'DESC' };
   constructor(
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
   ) { }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -65,6 +74,9 @@ export class SoftTableComponent implements OnChanges, AfterViewInit {
     }
   }
   ngAfterViewInit() {
+    const docEl = document.documentElement;
+    this.parentElement.nativeElement.style.width = this.parentElement.nativeElement.offsetWidth + 'px';
+    this.tableElement.nativeElement.style.display = 'table';
     const columns = this.getColumns();
     this.deepColumns = this.getDeepColumns(columns);
     this.columns = this.platColumns(columns);

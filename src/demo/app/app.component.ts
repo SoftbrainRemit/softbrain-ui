@@ -118,6 +118,11 @@ export class AppComponent implements OnInit {
         path: '/components/upload',
         show: true,
         index: 'upload'
+      }, {
+        label: 'dropdown',
+        path: '/components/dropdown',
+        show: true,
+        index: 'dropdown'
       }]
     }];
   }

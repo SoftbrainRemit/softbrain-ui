@@ -26,6 +26,7 @@ import { ButtonComponent } from './pages/components/button/button.component';
 import { TabsComponent } from './pages/components/tabs/tabs.component';
 import { TableComponent } from './pages/components/table/table.component';
 import { UploadComponent } from './pages/components/upload/upload.component';
+import { DropdownComponent } from './pages/components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { UploadComponent } from './pages/components/upload/upload.component';
     BadgeComponent,
     TooltipComponent,
     StepsComponent,
-    UploadComponent
+    UploadComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,

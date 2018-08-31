@@ -30,6 +30,8 @@ import { SoftTooltipComponent } from './controls/soft-tooltip/soft-tooltip.compo
 import { SoftBadgeComponent } from './controls/soft-badge/soft-badge.component';
 import { SoftStepsComponent } from './controls/soft-steps/soft-steps.component';
 import { SoftUploadComponent } from './controls/soft-upload/soft-upload.component';
+import { SoftDropdownComponent } from './controls/soft-dropdown/soft-dropdown.component';
+import { SoftTreeComponent } from './controls/soft-tree/soft-tree.component';
 
 import { SoftTabDirective } from './directives/soft-tab.directive';
 import { SoftListPipe } from './pipes/soft-list.pipe';
@@ -64,6 +66,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
         SoftTooltipComponent,
         SoftStepsComponent,
         SoftUploadComponent,
+        SoftDropdownComponent,
+        SoftTreeComponent,
 
         SoftListPipe,
     ],
@@ -92,6 +96,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
         SoftTooltipComponent,
         SoftStepsComponent,
         SoftUploadComponent,
+        SoftDropdownComponent,
 
         SoftListPipe,
     ],

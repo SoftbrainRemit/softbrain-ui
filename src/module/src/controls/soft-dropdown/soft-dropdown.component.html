@@ -1,0 +1,13 @@
+<div class="soft-dropdown">
+  <div class="soft-dropdown-action" #el (click)="onClick($event)" (mouseenter)="onMouseEnter()">
+    <div class="soft-dropdown-action-template">
+      <ng-template [ngIf]="actionTemplate" [ngTemplateOutlet]="actionTemplate"></ng-template>
+    </div>
+    <div class="soft-dropdown-arrow">
+      <span class="fa fa-angle-down" [@reversalAnimation]="show"></span>
+    </div>
+  </div>
+  <div [class]="'soft-dropdown-list soft-dropdown-' + placement" [@slideUpDownAnimation]="show" [ngStyle]="{top: top + 'px'}">
+    <ng-content></ng-content>
+  </div>
+</div>

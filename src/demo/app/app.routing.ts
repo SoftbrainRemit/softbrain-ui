@@ -15,6 +15,7 @@ import { TabsComponent } from './pages/components/tabs/tabs.component';
 import { CanActivedService } from './services/canActived.service';
 import { TableComponent } from './pages/components/table/table.component';
 import { UploadComponent } from './pages/components/upload/upload.component';
+import { DropdownComponent } from './pages/components/dropdown/dropdown.component';
 
 export const appRoutes: Routes = [{
   path: 'index',
@@ -85,6 +86,10 @@ export const appRoutes: Routes = [{
     path: 'upload',
     component: UploadComponent,
     data: { index: 'upload' }
+  }, {
+    path: 'dropdown',
+    component: DropdownComponent,
+    data: { index: 'dropdown' }
   }]
 }, {
   path: '**',

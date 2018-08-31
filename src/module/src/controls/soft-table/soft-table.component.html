@@ -1,4 +1,4 @@
-<div class="soft-table-container">
+<div class="soft-table-container" #root>
   <div class="soft-table-title">
     <div>
       <span *ngIf="title">{{title}}</span>
@@ -7,8 +7,8 @@
       <ng-template [ngIf]="subtitleTemplate" [ngTemplateOutlet]="subtitleTemplate"></ng-template>
     </div>
   </div>
-  <div class="soft-table-content">
-    <table class="soft-table">
+  <div class="soft-table-content" #parent>
+    <table class="soft-table" #table>
       <thead>
         <tr *ngFor="let level of headerLevels">
           <td *ngIf="level === 1 && hasCheckbox" [rowSpan]="maxLevel" [style.width]="'55px'">

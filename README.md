@@ -1,5 +1,9 @@
 # Softbrain UI
 
+### 2018.8.30 更新 1.0.4
+修正soft-table组件超出宽度时显示滚动条的问题
+新增下拉组件soft-dropdown
+
 ### 2018.8.30 更新 1.0.3
 修正soft-checkbox组件大小不对的问题
 
