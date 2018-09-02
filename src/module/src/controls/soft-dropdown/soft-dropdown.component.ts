@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { reversalAnimation } from './../../animations/reversal-animation';
 import { slideUpDownAnimation } from './../../animations/slide-up-down-animation';
-import { Component, OnInit, ContentChild, TemplateRef, Input, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ContentChild, TemplateRef, Input, ElementRef, AfterViewInit, ViewChild, NgZone } from '@angular/core';
 
 @Component({
   selector: 'soft-dropdown',
@@ -19,11 +19,16 @@ export class SoftDropdownComponent implements OnInit, AfterViewInit {
   @ContentChild('action')
   actionTemplate: TemplateRef<any>;
 
-  top: number;
+  top: number = 0;
   show: boolean;
   constructor(
-    private host: ElementRef
-  ) { }
+    private host: ElementRef,
+    private ngZone: NgZone
+  ) {
+    this.ngZone.runOutsideAngular(() => {
+      this.top = 0;
+    });
+  }
 
   ngOnInit() {
     Observable.fromEvent(document, 'click').subscribe(event => {
@@ -35,7 +40,9 @@ export class SoftDropdownComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.top = this.el.nativeElement.offsetHeight + 5;
+    this.ngZone.run(() => {
+      this.top = this.el.nativeElement.offsetHeight + 5;
+    });
   }
 
   onClick(event: Event) {
