@@ -1,7 +1,7 @@
 {
   "name": "softbrain-ui",
   "description": "softbrain common components and services",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": {
     "name": "softbrain",
     "email": "earthremit@163.com"
@@ -13,6 +13,10 @@
     "softbrain",
     "ui"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SoftbrainRemit/softbrain-ui.git"
+  },
   "dependencies": {
   },
   "peerDependencies": {
