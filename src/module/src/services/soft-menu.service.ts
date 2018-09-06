@@ -14,6 +14,8 @@ export class SoftMenuService {
   };
   trigger: 'hover' | 'click';
   mode: 'vertical' | 'horizontal';
+  isCollapse: boolean;
+  showIcon: boolean;
   template: TemplateRef<any>;
   onHorizontalClick: EventEmitter<any> = new EventEmitter();
   onInitIndexSet: EventEmitter<any> = new EventEmitter();
@@ -28,6 +30,14 @@ export class SoftMenuService {
   }) {
     this.colors = this.colors || {};
     this.colors = option;
+  }
+
+  setCollapse(collapse: boolean) {
+    this.isCollapse = collapse;
+  }
+
+  setShowIcon(showIcon: boolean) {
+    this.showIcon = showIcon;
   }
 
   getHoverBackgroundColor(color?: string) {

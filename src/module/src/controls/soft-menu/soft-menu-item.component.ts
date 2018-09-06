@@ -17,7 +17,9 @@ export class SoftMenuItemComponent implements OnInit, OnDestroy {
     @Input()
     menu: SoftMenuItem;
     @Input()
-    serviceInstance: SoftMenuService;
+    menuService: SoftMenuService;
+    @Input()
+    level = 0;
     expand: boolean;
     active: boolean;
     hover: boolean;
@@ -25,17 +27,17 @@ export class SoftMenuItemComponent implements OnInit, OnDestroy {
         private router: Router
     ) { }
     ngOnInit() {
-        if (this.menu.children && this.menu.children.length && this.serviceInstance.getActive(this.menu)) {
+        if (this.menu.children && this.menu.children.length && this.menuService.getActive(this.menu)) {
             this.expand = true;
         }
-        this.serviceInstance.onHorizontalClick.subscribe(() => {
-            if (this.serviceInstance.mode === 'horizontal' && !this.hover && this.expand) {
+        this.menuService.onHorizontalClick.subscribe(() => {
+            if (this.menuService.mode === 'horizontal' && !this.hover && this.expand) {
                 this.expand = false;
             }
         });
-        this.serviceInstance.onInitIndexSet.subscribe(() => {
-            if (this.serviceInstance.trigger === 'click' && this.serviceInstance.initIndex) {
-                if (this.menu.children && this.menu.children.length && this.serviceInstance.getActive(this.menu)) {
+        this.menuService.onInitIndexSet.subscribe(() => {
+            if (this.menuService.trigger === 'click' && this.menuService.initIndex) {
+                if (this.menu.children && this.menu.children.length && this.menuService.getActive(this.menu)) {
                     this.expand = true;
                 }
             }
@@ -43,21 +45,21 @@ export class SoftMenuItemComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.serviceInstance.onHorizontalClick.unsubscribe();
+        this.menuService.onHorizontalClick.unsubscribe();
     }
 
     onFocus() {
 
     }
     onBlur() {
-        if (this.serviceInstance.trigger === 'hover' && this.expand === true && this.menu.children && this.menu.children.length) {
+        if (this.menuService.trigger === 'hover' && this.expand === true && this.menu.children && this.menu.children.length) {
             this.expand = false;
         }
     }
 
     onMouseEnter() {
         if (this.menu.disabled) { return; }
-        if (this.serviceInstance.trigger === 'hover' && this.menu.children && this.menu.children.length) {
+        if (this.menuService.trigger === 'hover' && this.menu.children && this.menu.children.length) {
             this.expand = true;
             this.chkElement.nativeElement.focus();
         }
@@ -65,30 +67,41 @@ export class SoftMenuItemComponent implements OnInit, OnDestroy {
     }
     onMouseLeave() {
         if (this.menu.disabled) { return; }
-        this.hover = false;
+        if (!this.menuService.isCollapse) {
+            this.hover = false;
+        }
+    }
+    onMenuMouseLeave() {
+        if (this.menu.disabled) { return; }
+        if (this.hover) {
+            this.hover = false;
+        }
+        if ((this.menuService.isCollapse || (this.menuService.mode === 'horizontal')) && this.expand) {
+            this.expand = false;
+        }
     }
     clickHandle(menu: SoftMenuItem) {
         if (this.menu.disabled) { return; }
-        if (!menu.path && this.serviceInstance.trigger === 'click' && menu.children && menu.children.length) {
+        if (!menu.path && this.menuService.trigger === 'click' && menu.children && menu.children.length) {
             this.expand = !this.expand;
             return;
         }
         if (menu.path) {
-            if (this.serviceInstance.mode === 'horizontal') {
-                this.serviceInstance.onHorizontalClick.emit();
+            if (this.menuService.mode === 'horizontal') {
+                this.menuService.onHorizontalClick.emit();
             }
             this.router.navigate([menu.path]);
         }
-        this.serviceInstance.initIndex = menu.index;
+        this.menuService.initIndex = menu.index;
     }
 
     getStyle() {
         const style: any = {};
-        const colors = this.serviceInstance.colors || {};
-        this.active = this.serviceInstance.getActive(this.menu);
+        const colors = this.menuService.colors || {};
+        this.active = this.menuService.getActive(this.menu);
         if (this.hover) {
             style.color = colors.hoverColor || '';
-            style['background-color'] = this.serviceInstance.getHoverBackgroundColor() || '';
+            style['background-color'] = this.menuService.getHoverBackgroundColor() || '';
         } else if (this.active) {
             style.color = colors.activeColor || '';
             style['background-color'] = colors.activeBgColor || '';
@@ -97,15 +110,15 @@ export class SoftMenuItemComponent implements OnInit, OnDestroy {
             style['background-color'] = colors.bgColor || '';
         }
         if (this.menu.disabled) {
-            style.color = this.serviceInstance.getHoverBackgroundColor(this.serviceInstance.colors.textColor) || '';
+            style.color = this.menuService.getHoverBackgroundColor(this.menuService.colors.textColor) || '';
         }
         return style;
     }
 
     getMenuBackgroundColor() {
-        this.active = this.serviceInstance.getActive(this.menu);
+        this.active = this.menuService.getActive(this.menu);
         if (this.active) {
-            return this.serviceInstance.colors.activeBgColor || '';
+            return this.menuService.colors.activeBgColor || '';
         } else {
             return 'transparent';
         }

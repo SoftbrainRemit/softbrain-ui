@@ -1,24 +1,30 @@
-<div [class]="'soft-menu-item soft-menu-item-' + serviceInstance.mode" *ngIf="menu.show">
-  <input type="checkbox" #chk style="width:0; height: 0;position: absolute;" [checked]="expand" (focus)="onFocus()" (blur)="onBlur()">
-  <div class="soft-menu-item-label" [ngClass]="{'menu-disabled': menu.disabled}" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" [ngStyle]="getStyle()"
+<div [class]="'soft-menu-item soft-menu-item-' + menuService.mode" (mouseleave)="onMenuMouseLeave()"
+  [class.normal-width]="!menuService.isCollapse" [class.collapse-width]="menuService.isCollapse && menuService.showIcon && level === 0"
+  *ngIf="menu.show">
+  <input type="checkbox" #chk style="width:0; height: 0;position: absolute;" [checked]="expand" (focus)="onFocus()"
+    (blur)="onBlur()">
+  <div class="soft-menu-item-label" [class.menu-padding-right]="menuService.mode === 'vertical' && menuService.isCollapse"
+    [ngClass]="{'menu-disabled': menu.disabled}" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" [ngStyle]="getStyle()"
     (click)="clickHandle(menu)">
-    <div class="soft-menu-item-label-text" *ngIf="!serviceInstance.template">
-      <div class="soft-menu-item-label-flex">
+    <div class="soft-menu-item-label-text" *ngIf="!menuService.template">
+      <div class="soft-menu-item-label-flex" [style.overflow]="hover ? 'visible' : ''">
         <i *ngIf="menu.icon" [class]="'soft-item-icon ' + menu.icon"></i>
-        <div class="soft-menu-item-action" *ngIf="!menu.children || !menu.children.length">
-          <span class="soft-menu-item-link">{{menu.label}}</span>
-        </div>
-        <div class="soft-menu-item-action" *ngIf="menu.children && menu.children.length">
+        <div class="soft-menu-item-action" *ngIf="hover || !menuService.isCollapse || level >= 1">
           <span>{{menu.label}}</span>
         </div>
       </div>
     </div>
-    <div class="soft-menu-item-label-text" *ngIf="serviceInstance.template">
-      <ng-template [ngTemplateOutlet]="serviceInstance.template" [ngTemplateOutletContext]="{menu: menu}"></ng-template>
+    <div class="soft-menu-item-label-text" *ngIf="menuService.template">
+      <ng-template [ngTemplateOutlet]="menuService.template" [ngTemplateOutletContext]="{menu: menu}"></ng-template>
     </div>
-    <span *ngIf="!menu.path && menu.children && menu.children.length" [@reversalAnimation]="expand" class="soft-item-arrow fa fa-angle-down"></span>
+    <span *ngIf="(!menuService.isCollapse && level === 0) && !menu.path && menu.children && menu.children.length"
+      [@reversalAnimation]="expand" class="soft-item-arrow fa fa-angle-down"></span>
+    <span [class.menu-collapse-arrow]="menuService.isCollapse" *ngIf="((menuService.isCollapse && hover) || level >= 1) && !menu.path && menu.children && menu.children.length"
+      class="soft-item-arrow fa fa-angle-right"></span>
   </div>
-  <div class="soft-menu-item-children" [@dropAnimation]="expand" *ngIf="!menu.path && menu.children && menu.children.length">
-    <soft-sub-menu [menus]="menu.children" [serviceInstance]="serviceInstance"></soft-sub-menu>
+  <div class="soft-menu-item-children" [class.normal-width]="level >= 1 || menuService.isCollapse"
+    [class.right-position]="level >= 1 || (menuService.isCollapse && menuService.showIcon && level === 0)" *ngIf="!menu.path && menu.children && menu.children.length"
+    [@dropAnimation]="expand">
+    <soft-sub-menu [menus]="menu.children" [menuService]="menuService" [level]="level + 1"></soft-sub-menu>
   </div>
 </div>

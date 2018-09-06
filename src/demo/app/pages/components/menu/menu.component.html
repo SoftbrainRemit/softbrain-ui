@@ -1,7 +1,7 @@
 <h2>Menu</h2>
 <h3>Basic</h3>
-<div style="width: 300px;">
-  <soft-menu [menus]="menus">
+<div>
+  <soft-menu [menus]="menus" [width]="'400px'">
   </soft-menu>
 </div>
 <html-bind url="/menu/basic-html.md" language="html"></html-bind>
@@ -23,11 +23,11 @@
 <html-bind url="/menu/disabled-component.md" language="typescript"></html-bind>
 
 <h3>Collapse</h3>
-<div style="max-width: 300px; position: relative;">
-  <div style="transition: transform 0.2s; -webkit-transition: transform 0.2s" [ngStyle]="{'transform': isCollapse ? 'translateX(0)' : 'translateX(280px)'}">
+<div style="display: inline-block;">
+  <div [ngStyle]="{'transform': isCollapse ? 'translateX(0)' : 'translateX(280px)'}">
     <i class="fa fa-navicon fa-fw" style="cursor: pointer;" (click)="onCollapse()"></i>
   </div>
-  <soft-menu [menus]="menus" [collapse]="isCollapse"></soft-menu>
+  <soft-menu [menus]="menus" [collapse]="isCollapse" [collapseShowIcon]="true"></soft-menu>
 </div>
 <html-bind url="/menu/collapse-html.md" language="html"></html-bind>
 <html-bind url="/menu/collapse-component.md" language="typescript"></html-bind>

@@ -12,7 +12,11 @@ export class SoftMenuComponent implements OnInit, OnChanges {
   @Input()
   menus: Array<SoftMenuItem>;
   @Input()
+  width: string = '100%';
+  @Input()
   collapse: boolean = false;
+  @Input()
+  collapseShowIcon: boolean;
   @Input()
   mode: 'horizontal' | 'vertical' = 'vertical';
   @Input()
@@ -31,7 +35,6 @@ export class SoftMenuComponent implements OnInit, OnChanges {
   activeBackground: string;
   @ContentChild('menuItem')
   menuItemTemplate: TemplateRef<any>;
-
   constructor(
     public menuService: SoftMenuService
   ) {
@@ -56,6 +59,14 @@ export class SoftMenuComponent implements OnInit, OnChanges {
     if (change && change.previousValue !== change.currentValue) {
       this.menuService.initIndex = change.currentValue;
       this.menuService.onInitIndexSet.emit();
+    }
+    const collapseChange = changes['collapse'];
+    if (collapseChange) {
+      this.menuService.setCollapse(collapseChange.currentValue);
+    }
+    const showIconChange = changes['collapseShowIcon'];
+    if (showIconChange) {
+      this.menuService.setShowIcon(showIconChange.currentValue);
     }
   }
   getStyle() {

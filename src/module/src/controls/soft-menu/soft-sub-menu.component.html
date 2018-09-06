@@ -1,5 +1,5 @@
 <div class="soft-sub-menu" [ngStyle]="getStyle()">
   <div class="soft-sub-menu-item" *ngFor="let item of menus">
-    <soft-menu-item [menu]="item" [serviceInstance]="serviceInstance"></soft-menu-item>
+    <soft-menu-item [menu]="item" [menuService]="menuService" [level]="level"></soft-menu-item>
   </div>
 </div>

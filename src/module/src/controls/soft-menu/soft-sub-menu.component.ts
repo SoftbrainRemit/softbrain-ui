@@ -12,7 +12,9 @@ export class SoftSubMenuComponent implements OnInit {
     @Input()
     menus: Array<SoftMenuItem>;
     @Input()
-    serviceInstance: SoftMenuService;
+    menuService: SoftMenuService;
+    @Input()
+    level: number;
     constructor(
         private posService: SoftPositionService
     ) { }
@@ -21,7 +23,7 @@ export class SoftSubMenuComponent implements OnInit {
 
     getStyle() {
         const style: any = {};
-        style['background-color'] = this.serviceInstance.colors.bgColor || '';
+        style['background-color'] = this.menuService.colors.bgColor || '';
         return style;
     }
 }

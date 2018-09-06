@@ -1,3 +1,3 @@
-<div [class]="'soft-menu soft-menu-' + mode" [style.width]="mode === 'vertical' && collapse ? '0' : ''" [style.overflow]="mode === 'vertical' && collapse ? 'hidden' : 'visible'" [ngStyle]="getStyle()">
-  <soft-menu-item *ngFor="let item of menus" [menu]="item" [serviceInstance]="menuService"></soft-menu-item>
+<div [class]="'soft-menu soft-menu-' + mode" [style.width]="mode === 'vertical' && collapse ? (collapseShowIcon ? '' : '0') : width" [ngStyle]="getStyle()">
+  <soft-menu-item *ngFor="let item of menus" [menu]="item" [menuService]="menuService"></soft-menu-item>
 </div>
