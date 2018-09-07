@@ -8,7 +8,8 @@ import {
   ElementRef, ViewChild, OnDestroy, NgZone
 } from '@angular/core';
 import { Observable, Observer, Subscription } from 'rxjs';
-import * as moment from 'moment';
+
+declare var moment: any;
 
 export const SoftDatetimePickerValueAccessor: Provider = {
   provide: NG_VALUE_ACCESSOR,
