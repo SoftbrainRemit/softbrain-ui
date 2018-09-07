@@ -1,0 +1,161 @@
+@import "../../softbrain-styles.scss";
+
+.soft-datetime-picker {
+  position: relative;
+
+  .picker-container {
+    position: absolute;
+    display: flex;
+    left: 0;
+    border: 1px solid $border-color-focus;
+
+    .date-picker,
+    .time-picker {
+      .list-item {
+        cursor: pointer;
+
+        .list-item-inner {
+          display: flex;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          color: $border-color-focus;
+
+          &.hover {
+            background-color: $gray-color;
+          }
+
+          &.selected {
+            background-color: $border-color-focus;
+            color: $default-panel-bg-color;
+          }
+        }
+      }
+    }
+
+    .date-picker {
+      width: 400px;
+      background-color: $default-panel-bg-color;
+
+      .action-panel {
+        height: 50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $border-color-focus;
+        color: $default-panel-bg-color;
+
+        .prev,
+        .next {
+          width: 50px;
+        }
+
+        .action-title {
+          flex: 1;
+        }
+
+        .prev,
+        .next,
+        .action-title {
+          height: 100%;
+
+          div {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .action-button:hover {
+            background-color: $hover-color-focus;
+          }
+        }
+      }
+
+      .date-panel {
+        padding: 0 10px 10px;
+
+        .day-list,
+        .month-list,
+        .year-list {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .year-list,
+        .month-list {
+          .list-item {
+            width: 25%;
+            padding: 10px;
+            height: 81.33px;
+          }
+        }
+
+        .day-list {
+
+          .list-title,
+          .list-item {
+            width: 14.2857%;
+            padding: 5px;
+          }
+
+          .list-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: default;
+          }
+
+          .list-item {
+            height: 2.5rem;
+
+            .list-item-inner {
+              &.color-gray {
+                color: $disabled-color;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .time-picker {
+      background-color: $default-panel-bg-color;
+
+      .time-title {
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $border-color-focus;
+        color: $default-panel-bg-color;
+      }
+
+      .time-panel {
+        width: 400px;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        max-height: 284px;
+        padding: 5px;
+
+        .list-item {
+          .list-item-inner {
+            padding: 0.5rem;
+          }
+        }
+
+        &.time-panel-vertical {
+          width: 100px;
+          display: block;
+        }
+      }
+    }
+  }
+}

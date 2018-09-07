@@ -1,0 +1,60 @@
+<div class="soft-datetime-picker">
+  <soft-input (onFocus)="onFocus($event)" [disabled]="disabled" #inputEl [(ngModel)]="inputModel" [size]="size" (valueChange)="onInputValueChange($event)"></soft-input>
+  <div class="picker-container" *ngIf="show" [@downToUpAnimation]="show" #picker [style.bottom]="placement === 'top' && topValue ? topValue + 'px' : ''"
+    [style.top]="placement === 'bottom' && topValue ? topValue + 'px' : ''" [style.z-index]="zIndex">
+    <div class="date-picker" [hidden]="!showDate">
+      <div class="action-panel">
+        <div class="prev">
+          <div class="action-button" (click)="prev()" *ngIf="currentPanel !== 'month'">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </div>
+        </div>
+        <div [hidden]="currentPanel === 'year'" class="action-title" (click)="changePanel()">
+          <div class="action-button" [hidden]="currentPanel !== 'day'">{{currentYear}} {{monthList[currentMonth]}}</div>
+          <div class="action-button" [hidden]="currentPanel !== 'month'">{{currentYear}}</div>
+        </div>
+        <div class="next">
+          <div class="action-button" (click)="next()" *ngIf="currentPanel !== 'month'">
+            <i class="fa fa-fw fa-angle-right"></i>
+          </div>
+        </div>
+      </div>
+      <div class="date-panel">
+        <div [hidden]="currentPanel !== 'day'" class="day-list">
+          <div class="list-title" *ngFor="let w of weekList; let i = index;">
+            <div class="list-title-inner">{{w}}</div>
+          </div>
+          <div class="list-item" *ngFor="let d of dayList; let i = index;" (click)="onSelectedDay(d)">
+            <div class="list-item-inner" [class.hover]="dayEl.hover && d.month === currentMonth" #dayEl (mouseenter)="dayEl.hover = true"
+              (mouseleave)="dayEl.hover = false" [class.color-gray]="d.month !== currentMonth" [class.selected]="d.month === currentMonth && d.day === currentDay">{{d.day}}</div>
+          </div>
+        </div>
+        <div [hidden]="currentPanel !== 'month'" class="month-list">
+          <div class="list-item" (click)="onSelectedMonth(i)" *ngFor="let m of monthList; let i = index;">
+            <div class="list-item-inner" #monthEl (mouseenter)="monthEl.hover = true" (mouseleave)="monthEl.hover = false"
+              [class.selected]="i === currentMonth" [class.hover]="monthEl.hover">{{m}}</div>
+          </div>
+        </div>
+        <div [hidden]="currentPanel !== 'year'" class="year-list">
+          <div class="list-item" *ngFor="let y of yearList; let i = index;" (click)="onSelectedYear(y)">
+            <div class="list-item-inner" #yearEl (mouseenter)="yearEl.hover = true" (mouseleave)="yearEl.hover = false"
+              [class.selected]="y === currentYear" [class.hover]="yearEl.hover">{{y}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="time-picker" [hidden]="!showTime">
+      <div class="time-title">
+        <div class="time-title-inner">Timer</div>
+      </div>
+      <div class="time-panel" [ngStyle]="getTimePickerStyle()" [class.time-panel-vertical]="showTime && showDate">
+        <div class="list-item" *ngFor="let t of timeList; let i = index;" (click)="onSelectTime(t)">
+          <div class="list-item-inner" #timeEl (mouseenter)="timeEl.hover = true" (mouseleave)="timeEl.hover = false"
+            [class.hover]="timeEl.hover" [class.selected]="t.hour === currentHour && t.minute === currentMinute && t.second === currentSecond">
+            {{formatDigist(t.hour)}}:{{formatDigist(t.minute)}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

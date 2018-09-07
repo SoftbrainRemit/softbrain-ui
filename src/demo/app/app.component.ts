@@ -123,6 +123,11 @@ export class AppComponent implements OnInit {
         path: '/components/dropdown',
         show: true,
         index: 'dropdown'
+      }, {
+        label: 'DatetimePicker',
+        path: '/components/datetimepicker',
+        show: true,
+        index: 'datetimepicker'
       }]
     }];
   }

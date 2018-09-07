@@ -15,6 +15,7 @@ export { SoftTooltipComponent } from './src/controls/soft-tooltip/soft-tooltip.c
 export { SoftStepsComponent } from './src/controls/soft-steps/soft-steps.component';
 export { SoftUploadComponent } from './src/controls/soft-upload/soft-upload.component';
 export { SoftDropdownComponent } from './src/controls/soft-dropdown/soft-dropdown.component';
+export { SoftDatetimePickerComponent } from './src/controls/soft-datetime-picker/soft-datetime-picker.component';
 
 export { SoftTabDirective } from './src/directives/soft-tab.directive';
 

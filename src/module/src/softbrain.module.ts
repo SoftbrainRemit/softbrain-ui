@@ -36,6 +36,7 @@ import { SoftTreeComponent } from './controls/soft-tree/soft-tree.component';
 import { SoftTabDirective } from './directives/soft-tab.directive';
 import { SoftListPipe } from './pipes/soft-list.pipe';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { SoftDatetimePickerComponent } from './controls/soft-datetime-picker/soft-datetime-picker.component';
 
 @NgModule({
     imports: [
@@ -68,6 +69,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
         SoftUploadComponent,
         SoftDropdownComponent,
         SoftTreeComponent,
+        SoftDatetimePickerComponent,
 
         SoftListPipe,
     ],
@@ -97,6 +99,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
         SoftStepsComponent,
         SoftUploadComponent,
         SoftDropdownComponent,
+        SoftDatetimePickerComponent,
 
         SoftListPipe,
     ],

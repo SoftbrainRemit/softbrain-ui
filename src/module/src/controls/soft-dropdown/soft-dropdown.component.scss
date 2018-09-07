@@ -17,6 +17,7 @@
   .soft-dropdown-list {
     position: absolute;
     padding: 5px 0;
+    z-index: 9999;
 
     &.soft-dropdown-left {
       left: 0;

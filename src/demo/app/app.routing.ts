@@ -16,6 +16,7 @@ import { CanActivedService } from './services/canActived.service';
 import { TableComponent } from './pages/components/table/table.component';
 import { UploadComponent } from './pages/components/upload/upload.component';
 import { DropdownComponent } from './pages/components/dropdown/dropdown.component';
+import { DatetimePickerComponent } from './pages/components/datetime-picker/datetime-picker.component';
 
 export const appRoutes: Routes = [{
   path: 'index',
@@ -90,6 +91,10 @@ export const appRoutes: Routes = [{
     path: 'dropdown',
     component: DropdownComponent,
     data: { index: 'dropdown' }
+  }, {
+    path: 'datetimepicker',
+    component: DatetimePickerComponent,
+    data: { index: 'datetimepicker' }
   }]
 }, {
   path: '**',

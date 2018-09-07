@@ -56,6 +56,8 @@ export class SoftInputComponent implements OnInit, ControlValueAccessor {
   valueInput: EventEmitter<any> = new EventEmitter();
   @Output()
   inputClick: EventEmitter<any> = new EventEmitter();
+  @Output()
+  onFocus: EventEmitter<any> = new EventEmitter();
   model: any;
 
   inputFocus: boolean;
@@ -77,8 +79,9 @@ export class SoftInputComponent implements OnInit, ControlValueAccessor {
     this.onTouchedCallback = fn;
   }
 
-  onFocus() {
+  onInputFocus(event) {
     this.inputFocus = true;
+    this.onFocus.emit(event);
   }
 
   onBlur() {

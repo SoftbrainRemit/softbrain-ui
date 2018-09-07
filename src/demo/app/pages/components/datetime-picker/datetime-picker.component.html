@@ -1,0 +1,10 @@
+<soft-datetime-picker name="dt" [(ngModel)]="dt"></soft-datetime-picker>
+<div>
+  {{dt}}
+</div>
+<soft-datetime-picker name="dt2" [showTime]="true" [format]="'YYYY-MM-DD HH:mm:ss'" [(ngModel)]="dt2"></soft-datetime-picker>
+<div>
+  {{dt2}}
+</div>
+<soft-datetime-picker name="dt3" [showTime]="true" [showDate]="false" [timespan]="2" [format]="'HH:mm:ss'" [(ngModel)]="dt3"></soft-datetime-picker>
+<div>{{dt3}}</div>

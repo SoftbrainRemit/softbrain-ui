@@ -1,7 +1,10 @@
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { reversalAnimation } from './../../animations/reversal-animation';
 import { slideUpDownAnimation } from './../../animations/slide-up-down-animation';
-import { Component, OnInit, ContentChild, TemplateRef, Input, ElementRef, AfterViewInit, ViewChild, NgZone } from '@angular/core';
+import {
+  Component, OnInit, ContentChild, TemplateRef, Input, ElementRef, AfterViewInit, ViewChild,
+  NgZone, OnDestroy
+} from '@angular/core';
 
 @Component({
   selector: 'soft-dropdown',
@@ -9,7 +12,7 @@ import { Component, OnInit, ContentChild, TemplateRef, Input, ElementRef, AfterV
   styleUrls: ['./soft-dropdown.component.scss'],
   animations: [slideUpDownAnimation, reversalAnimation]
 })
-export class SoftDropdownComponent implements OnInit, AfterViewInit {
+export class SoftDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('el')
   el: ElementRef;
   @Input()
@@ -21,6 +24,7 @@ export class SoftDropdownComponent implements OnInit, AfterViewInit {
 
   top: number = 0;
   show: boolean;
+  private subscription: Subscription;
   constructor(
     private host: ElementRef,
     private ngZone: NgZone
@@ -31,12 +35,16 @@ export class SoftDropdownComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    Observable.fromEvent(document, 'click').subscribe(event => {
+    this.subscription = Observable.fromEvent(document, 'click').subscribe(event => {
       if (!this.show && event.target !== this.host.nativeElement) {
         return;
       }
       this.triggerShow();
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   ngAfterViewInit() {

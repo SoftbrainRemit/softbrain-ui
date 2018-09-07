@@ -4,6 +4,7 @@ import { SoftMenuService } from './../../services/soft-menu.service';
 import { SoftMenuItem } from './../../models/soft-menu.interface';
 import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'soft-menu-item',
@@ -23,6 +24,8 @@ export class SoftMenuItemComponent implements OnInit, OnDestroy {
     expand: boolean;
     active: boolean;
     hover: boolean;
+    private onHorizontalClickSubscriber: Subscription;
+    private onInitIndexSetSubscriber: Subscription;
     constructor(
         private router: Router
     ) { }
@@ -30,12 +33,12 @@ export class SoftMenuItemComponent implements OnInit, OnDestroy {
         if (this.menu.children && this.menu.children.length && this.menuService.getActive(this.menu)) {
             this.expand = true;
         }
-        this.menuService.onHorizontalClick.subscribe(() => {
+        this.onHorizontalClickSubscriber = this.menuService.onHorizontalClick.subscribe(() => {
             if (this.menuService.mode === 'horizontal' && !this.hover && this.expand) {
                 this.expand = false;
             }
         });
-        this.menuService.onInitIndexSet.subscribe(() => {
+        this.onInitIndexSetSubscriber = this.menuService.onInitIndexSet.subscribe(() => {
             if (this.menuService.trigger === 'click' && this.menuService.initIndex) {
                 if (this.menu.children && this.menu.children.length && this.menuService.getActive(this.menu)) {
                     this.expand = true;
@@ -45,7 +48,8 @@ export class SoftMenuItemComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.menuService.onHorizontalClick.unsubscribe();
+        this.onHorizontalClickSubscriber.unsubscribe();
+        this.onInitIndexSetSubscriber.unsubscribe();
     }
 
     onFocus() {

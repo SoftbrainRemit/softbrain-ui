@@ -4,12 +4,12 @@
   </div>
   <ng-container *ngIf="type !== 'textarea'">
     <input #input class="soft-input-inner soft-border soft-d-inline-block" [class.input-focus]="inputFocus" [type]="type"
-      [name]="name" [(ngModel)]="model" [autofocus]="autoFocus" (click)="onClick($event)" (focus)="onFocus()" (blur)="onBlur()" [required]="required" [maxlength]="maxLength"
+      [name]="name" [(ngModel)]="model" [autofocus]="autoFocus" (click)="onClick($event)" (focus)="onInputFocus($event)" (blur)="onBlur()" [required]="required" [maxlength]="maxLength"
       [minlength]="minLength" [placeholder]="placeholder" [disabled]="disabled" [readOnly]="readonly" [autocomplete]="autoComplete" (change)="onValueChange($event)" (input)="onValueInput($event)">
   </ng-container>
   <ng-container *ngIf="type === 'textarea'">
     <textarea #textarea class="soft-input-inner soft-border soft-d-inline-block" [class.input-focus]="inputFocus" [class.auto-size]="autoSize" [ngStyle]="{resize: true}"
-      [name]="name" [(ngModel)]="model" [autofocus]="autoFocus" (click)="onClick($event)" (focus)="onFocus()" (blur)="onBlur()" [required]="required" [maxlength]="maxLength"
+      [name]="name" [(ngModel)]="model" [autofocus]="autoFocus" (click)="onClick($event)" (focus)="onInputFocus($event)" (blur)="onBlur()" [required]="required" [maxlength]="maxLength"
       [minlength]="minLength" [placeholder]="placeholder" [disabled]="disabled" [readOnly]="readonly" (change)="onValueChange($event)" (input)="onValueInput($event)"></textarea>
   </ng-container>
   <div class="soft-input-group-append" *ngIf="type !== 'textarea' && appendTemplate">

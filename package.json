@@ -51,6 +51,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.0",
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "moment": "^2.22.2",
     "ng-packagr": "^4.0.1",
     "ng2-pdf-viewer": "^5.1.2",
     "ngx-markdown": "^6.1.0",

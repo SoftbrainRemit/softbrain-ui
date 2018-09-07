@@ -27,6 +27,7 @@ import { TabsComponent } from './pages/components/tabs/tabs.component';
 import { TableComponent } from './pages/components/table/table.component';
 import { UploadComponent } from './pages/components/upload/upload.component';
 import { DropdownComponent } from './pages/components/dropdown/dropdown.component';
+import { DatetimePickerComponent } from './pages/components/datetime-picker/datetime-picker.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { DropdownComponent } from './pages/components/dropdown/dropdown.componen
     TooltipComponent,
     StepsComponent,
     UploadComponent,
-    DropdownComponent
+    DropdownComponent,
+    DatetimePickerComponent
   ],
   imports: [
     BrowserModule,
