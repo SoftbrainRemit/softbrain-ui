@@ -1,5 +1,8 @@
 # Softbrain UI
 
+### 2018.9.10 更新 1.0.9
+修正soft-table组件在resize时不会自动更新宽度的问题
+
 ### 2018.9.7 新增 1.0.8
 新增datetime-picker组件
 

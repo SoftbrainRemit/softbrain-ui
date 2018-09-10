@@ -15,13 +15,13 @@
 
   .soft-table-content {
     width: 100%;
-    overflow-x: auto;
 
     .soft-table {
-      min-width: 100%;
+      width: 100%;
       border-collapse: collapse;
       border: 1px solid $border-color-focus;
-      display: none;
+      table-layout: fixed;
+      // display: none;
 
       tr {
         td {
@@ -38,6 +38,8 @@
           td {
             vertical-align: middle;
             font-weight: 500;
+            white-space: normal;
+            word-wrap: break-word;
           }
         }
       }

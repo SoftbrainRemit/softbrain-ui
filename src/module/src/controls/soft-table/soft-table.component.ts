@@ -1,9 +1,9 @@
 import {
   Component, Input, EventEmitter, Output, TemplateRef, ContentChild, ContentChildren,
-  QueryList, AfterViewInit, ChangeDetectorRef, SimpleChanges, OnChanges, ViewChild, ElementRef
+  QueryList, AfterViewInit, ChangeDetectorRef, SimpleChanges, OnChanges, ViewChild, ElementRef, OnDestroy
 } from '@angular/core';
 import { SoftTableColumnComponent } from './soft-table-column/soft-table-column.component';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 
@@ -12,7 +12,7 @@ import 'rxjs/add/operator/debounceTime';
   templateUrl: './soft-table.component.html',
   styleUrls: ['./soft-table.component.scss']
 })
-export class SoftTableComponent implements OnChanges, AfterViewInit {
+export class SoftTableComponent implements OnChanges, OnDestroy, AfterViewInit {
   @ViewChild('table')
   tableElement: ElementRef;
   @ViewChild('parent')
@@ -61,9 +61,13 @@ export class SoftTableComponent implements OnChanges, AfterViewInit {
   maxLevel: number = 1;
   headerLevels: number[];
   sortField: { key?: string, orderBy?: 'ASC' | 'DESC' } = { orderBy: 'DESC' };
+  private subscription: Subscription;
+  private onResizing: boolean;
+  private resizeTimeout: any;
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
-  ) { }
+  ) {
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     const change = changes['list'];
@@ -73,10 +77,16 @@ export class SoftTableComponent implements OnChanges, AfterViewInit {
       }
     }
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
   ngAfterViewInit() {
-    const docEl = document.documentElement;
-    this.parentElement.nativeElement.style.width = this.parentElement.nativeElement.offsetWidth + 'px';
-    this.tableElement.nativeElement.style.display = 'table';
+    this.subscription = Observable.fromEvent(window, 'resize').subscribe(() => {
+      this.onResize();
+    })
+    this.setTableStyle();
+
     const columns = this.getColumns();
     this.deepColumns = this.getDeepColumns(columns);
     this.columns = this.platColumns(columns);
@@ -135,6 +145,30 @@ export class SoftTableComponent implements OnChanges, AfterViewInit {
     }
     return false;
   }
+
+  private onResize() {
+    if (!this.onResizing) {
+      this.onResizing = true;
+      this.parentElement.nativeElement.style.width = '100%';
+      this.parentElement.nativeElement.style.overflowX = 'inhert';
+      this.tableElement.nativeElement.style.tableLayout = 'fixed';
+    }
+    if (this.resizeTimeout) {
+      clearTimeout(this.resizeTimeout);
+    }
+    this.resizeTimeout = setTimeout(() => {
+      this.setTableStyle();
+      this.onResizing = false;
+    }, 100);
+  }
+
+  private setTableStyle() {
+    const width = this.tableElement.nativeElement.offsetWidth + 'px';
+    this.parentElement.nativeElement.style.width = width;
+    this.parentElement.nativeElement.style.overflowX = 'auto';
+    this.tableElement.nativeElement.style.tableLayout = 'auto';
+  }
+
   private getSubColumns(col: SoftTableColumnComponent) {
     if (col.subColumns && col.subColumns.length > 1) {
       col.children = col.children || [];
